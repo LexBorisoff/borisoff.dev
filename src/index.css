@@ -16,6 +16,9 @@ body,
   width: 100%;
   height: 100%;
   background: #0f0f0f;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #383838 #252525;
 }
 
 body {
