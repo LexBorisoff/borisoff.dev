@@ -8,17 +8,18 @@ const HeaderContainer = styled.div`
 
 const Wrapper = styled.div`
   height: 100%;
-  width: 80%;
+  flex: 1;
   margin: 0 5rem;
   border-bottom: 1px solid #1d1d1d;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export default function Header(): React.ReactNode {
   return (
     <HeaderContainer className="header-container">
-      <Wrapper>header</Wrapper>
+      <Wrapper>lex@borisoff.dev</Wrapper>
     </HeaderContainer>
   );
 }

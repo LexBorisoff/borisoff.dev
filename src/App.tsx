@@ -10,7 +10,6 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   color: white;
-  user-select: none;
 `;
 
 function App(): ReactNode {
