@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react';
 import { styled } from 'styled-components';
 
+import Banner from './components/banner/banner';
 import Contact from './components/contact/contact';
 import Hero from './components/hero/hero';
 import Projects from './components/projects/projects';
@@ -15,6 +16,7 @@ const Container = styled.div`
 function App(): ReactNode {
   return (
     <Container className="container">
+      <Banner>🚧 This website is currently under construction 🚧</Banner>
       <Hero />
       <Stack />
       <Projects />
