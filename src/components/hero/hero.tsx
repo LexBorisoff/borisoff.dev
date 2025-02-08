@@ -33,20 +33,20 @@ const HeroContent = styled.div`
 
 const TextWrapper = styled.div`
   text-align: center;
-  max-width: 40rem;
+  max-width: 45rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 
   .hero-intro-text {
-    font-size: 1.5rem;
-    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.7rem;
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
     font-weight: bold;
     color: #999999;
   }
 
   .hero-main-text {
-    font-size: 4.5rem;
+    font-size: 4rem;
     font-weight: 500;
     line-height: 5rem;
     background-clip: text;
@@ -63,6 +63,7 @@ export default function Hero(): React.ReactNode {
   useEffect(() => {
     if (containerRef.current != null) {
       containerRef.current.addEventListener('mousemove', (e) => {
+        // TODO: account for scrolled height
         const x = (e.clientX / window.innerWidth) * 100;
         const y = (e.clientY / window.innerHeight) * 100;
         setCoords({ x, y });
@@ -80,9 +81,9 @@ export default function Hero(): React.ReactNode {
 
       <HeroContent className="hero-content">
         <TextWrapper>
-          <span className="hero-intro-text">{"Hi, I'm Lex 👨‍💻"}</span>
+          <span className="hero-intro-text">{"Hi, I'm Lex 👋"}</span>
           <span className="hero-main-text">
-            I create magical web experiences
+            I build practical things and magical web experiences
           </span>
         </TextWrapper>
       </HeroContent>
