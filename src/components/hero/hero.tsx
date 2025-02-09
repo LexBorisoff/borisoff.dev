@@ -3,19 +3,34 @@ import { styled } from 'styled-components';
 
 import Header from '../header/header';
 
-interface HeroContainerProps {
-  coords: { x: number; y: number };
-}
-const HeroSection = styled.section<HeroContainerProps>`
+const HeroSection = styled.section`
+  position: relative;
   height: 40rem;
   display: flex;
   flex-direction: column;
   justify-content: top;
+  background-size: 3rem 3rem;
+  background-image: linear-gradient(to right, #3a3a3a51 1px, transparent 1px),
+    linear-gradient(to bottom, #3a3a3a51 1px, transparent 1px);
+`;
+
+interface HeroMaskProps {
+  coords: { x: number; y: number };
+}
+const HeroMask = styled.div<HeroMaskProps>`
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  flex: 1;
   background: ${({ coords: { x, y } }) =>
-    `radial-gradient(40rem 40rem at ${x}% ${y}%, #00115e, transparent)`};
+    `radial-gradient(40rem 40rem at ${x}% ${y}%, #00115e8c, transparent)`};
 `;
 
 const HeroContent = styled.div`
+  z-index: 1;
   flex: 1;
   width: 100%;
   display: flex;
@@ -57,18 +72,28 @@ export default function Hero(): React.ReactNode {
   const [coords, setCoords] = useState({ x: 100, y: -10 });
 
   useLayoutEffect(() => {
-    if (containerRef.current != null) {
-      containerRef.current.addEventListener('mousemove', (e) => {
-        // TODO: account for scrolled height
-        const x = (e.clientX / window.innerWidth) * 100;
-        const y = (e.clientY / window.innerHeight) * 100;
-        setCoords({ x, y });
-      });
+    const ref = containerRef.current;
+
+    function callback(e: MouseEvent): void {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = ((e.clientY + window.scrollY) / window.innerHeight) * 100;
+      setCoords({ x, y });
     }
+
+    if (ref != null) {
+      ref.addEventListener('mousemove', callback);
+    }
+
+    return () => {
+      if (ref != null) {
+        ref.removeEventListener('mousemove', callback);
+      }
+    };
   }, []);
 
   return (
-    <HeroSection className="hero-section" ref={containerRef} coords={coords}>
+    <HeroSection className="hero-section" ref={containerRef}>
+      <HeroMask coords={coords} />
       <Header />
       <HeroContent className="hero-content">
         <TextWrapper>

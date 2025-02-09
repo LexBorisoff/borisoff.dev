@@ -3,6 +3,7 @@ import { MdOutlineEmail } from 'react-icons/md';
 import { css, styled } from 'styled-components';
 
 const HeaderSection = styled.header`
+  z-index: 1;
   height: 5rem;
   display: flex;
   justify-content: center;
@@ -16,7 +17,6 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #1a2249;
 `;
 
 const EmailWrapper = styled.div`
@@ -26,6 +26,7 @@ const EmailWrapper = styled.div`
   gap: 1rem;
 
   span {
+    font-size: 1.2rem;
     font-family: 'Courier Prime', 'Courier New', Courier, monospace;
     color: #d9d9d9;
   }
@@ -40,13 +41,19 @@ const LinksWrapper = styled.div`
 `;
 
 const iconCss = css`
-  background: #001352ab;
-  border: 1px solid #475994ab;
+  background: #2727277a;
+  border: 1px solid #3a3a3a;
   border-radius: 50%;
   height: 2.5rem;
   width: 2.5rem;
   display: grid;
   place-content: center;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #0c2576ab;
+    border: 1px solid #475994ab;
+  }
 `;
 
 interface IconWrapperProps {
@@ -88,18 +95,18 @@ export default function Header(): React.ReactNode {
       <Wrapper>
         <EmailWrapper>
           <IconWrapper>
-            <MdOutlineEmail size="1.4rem" />
+            <MdOutlineEmail size="1.2rem" />
           </IconWrapper>
           <span>lex@borisoff.dev</span>
         </EmailWrapper>
 
         <LinksWrapper>
           <Link href="https://github.com/lexborisoff">
-            <FaGithub size="1.4rem" />
+            <FaGithub size="1.2rem" />
           </Link>
 
           <Link href="https://linkedin.com/in/lexborisoff">
-            <FaLinkedinIn size="1.4rem" />
+            <FaLinkedinIn size="1.2rem" />
           </Link>
         </LinksWrapper>
       </Wrapper>
