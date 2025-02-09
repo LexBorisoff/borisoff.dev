@@ -24,11 +24,7 @@ const HeroContent = styled.div`
   align-items: center;
   gap: 3rem;
   padding-bottom: 2rem;
-
-  cursor:
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><text y="13" font-size="13">✨</text></svg>')
-      10 10,
-    auto;
+  cursor: default;
 `;
 
 const TextWrapper = styled.div`
@@ -39,10 +35,10 @@ const TextWrapper = styled.div`
   gap: 1.5rem;
 
   .hero-intro-text {
-    font-size: 1.7rem;
+    font-size: 2rem;
     font-family: 'Courier Prime', 'Courier New', Courier, monospace;
-    font-weight: bold;
-    color: #999999;
+    font-weight: 500;
+    color: #b8b8b8;
   }
 
   .hero-main-text {
@@ -74,12 +70,11 @@ export default function Hero(): React.ReactNode {
   return (
     <HeroSection className="hero-section" ref={containerRef} coords={coords}>
       <Header />
-
       <HeroContent className="hero-content">
         <TextWrapper>
           <span className="hero-intro-text">{"Hi, I'm Lex 👋"}</span>
           <span className="hero-main-text">
-            I build practical things and magical web experiences
+            I build practical tools and magical web experiences
           </span>
         </TextWrapper>
       </HeroContent>
