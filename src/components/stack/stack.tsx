@@ -60,12 +60,6 @@ const SliderWrapper = styled.div`
 
   mask-image: ${maskImage};
   -webkit-mask-image: ${maskImage};
-
-  &:hover {
-    ${Slider} {
-      animation-play-state: paused;
-    }
-  }
 `;
 
 const Logo = styled.div`

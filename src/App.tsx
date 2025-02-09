@@ -7,16 +7,20 @@ import Hero from './components/hero/hero';
 import Projects from './components/projects/projects';
 import Stack from './components/stack/stack';
 
+const UNDER_CONSTRUCTION = import.meta.env.VITE_UNDER_CONSTRUCTION === 'true';
+
 const Container = styled.div`
   width: 100%;
-  height: 100%;
   color: white;
 `;
 
 function App(): ReactNode {
   return (
     <Container className="container">
-      <Banner>🚧 This website is currently under construction 🚧</Banner>
+      {UNDER_CONSTRUCTION && (
+        <Banner>🚧 This website is under construction 🚧</Banner>
+      )}
+
       <Hero />
       <Stack />
       <Projects />
