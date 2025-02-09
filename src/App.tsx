@@ -1,23 +1,28 @@
 import { type ReactNode } from 'react';
 import { styled } from 'styled-components';
 
+import Banner from './components/banner/banner';
+import Contact from './components/contact/contact';
+import Hero from './components/hero/hero';
+import Projects from './components/projects/projects';
+import Stack from './components/stack/stack';
+
 const Container = styled.div`
-  height: 100%;
   width: 100%;
-  background: #141414;
+  height: 100%;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 5rem;
-  font-family: 'Poppins';
-  font-weight: 600;
-  text-align: center;
-  user-select: none;
 `;
 
 function App(): ReactNode {
-  return <Container>Lex Borisoff</Container>;
+  return (
+    <Container className="container">
+      <Banner>🚧 This website is currently under construction 🚧</Banner>
+      <Hero />
+      <Stack />
+      <Projects />
+      <Contact />
+    </Container>
+  );
 }
 
 export default App;
