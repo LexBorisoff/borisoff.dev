@@ -1,13 +1,11 @@
 import { styled } from 'styled-components';
 
-const ProjectsContainer = styled.div`
+const ProjectsSection = styled.section`
   height: 30rem;
 `;
 
 export default function Projects(): React.ReactNode {
   return (
-    <ProjectsContainer className="projects-container">
-      projects
-    </ProjectsContainer>
+    <ProjectsSection className="projects-container">projects</ProjectsSection>
   );
 }

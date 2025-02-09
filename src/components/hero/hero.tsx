@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 
 import Header from '../header/header';
@@ -6,7 +6,7 @@ import Header from '../header/header';
 interface HeroContainerProps {
   coords: { x: number; y: number };
 }
-const HeroContainer = styled.div<HeroContainerProps>`
+const HeroSection = styled.section<HeroContainerProps>`
   height: 40rem;
   display: flex;
   flex-direction: column;
@@ -60,7 +60,7 @@ export default function Hero(): React.ReactNode {
   const containerRef = useRef<HTMLDivElement>(null);
   const [coords, setCoords] = useState({ x: 100, y: -10 });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (containerRef.current != null) {
       containerRef.current.addEventListener('mousemove', (e) => {
         // TODO: account for scrolled height
@@ -72,11 +72,7 @@ export default function Hero(): React.ReactNode {
   }, []);
 
   return (
-    <HeroContainer
-      className="hero-container"
-      ref={containerRef}
-      coords={coords}
-    >
+    <HeroSection className="hero-section" ref={containerRef} coords={coords}>
       <Header />
 
       <HeroContent className="hero-content">
@@ -87,6 +83,6 @@ export default function Hero(): React.ReactNode {
           </span>
         </TextWrapper>
       </HeroContent>
-    </HeroContainer>
+    </HeroSection>
   );
 }
