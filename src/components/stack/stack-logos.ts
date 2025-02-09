@@ -1,57 +1,63 @@
+import css from '../../assets/stack/css.png';
+import html from '../../assets/stack/html.png';
+import javascript from '../../assets/stack/javascript.png';
+import nestjs from '../../assets/stack/nestjs.png';
+import nodejs from '../../assets/stack/nodejs.png';
+import postgresql from '../../assets/stack/postgresql.png';
+import react from '../../assets/stack/react.png';
+import typescript from '../../assets/stack/typescript.png';
+import vite from '../../assets/stack/vite.png';
+
 interface StackLogoInterface {
   name: string;
   src: string;
   alt: string;
 }
 
-function getUrl(logo: string): string {
-  return `https://raw.githubusercontent.com/LexBorisoff/borisoff.dev/refs/heads/main/src/assets/stack/${logo}.png`;
-}
-
 export const stackLogos: StackLogoInterface[] = [
   {
     name: 'HTML',
-    src: getUrl('html'),
+    src: html,
     alt: 'HTML logo',
   },
   {
     name: 'CSS',
-    src: getUrl('css'),
+    src: css,
     alt: 'CSS logo',
   },
   {
     name: 'JavaScript',
-    src: getUrl('javascript'),
+    src: javascript,
     alt: 'JavaScript logo',
   },
   {
     name: 'TypeScript',
-    src: getUrl('typescript'),
+    src: typescript,
     alt: 'TypeScript logo',
   },
   {
     name: 'React',
-    src: getUrl('react'),
+    src: react,
     alt: 'React logo',
   },
   {
     name: 'Vite',
-    src: getUrl('vite'),
+    src: vite,
     alt: 'Vite logo',
   },
   {
     name: 'Node.js',
-    src: getUrl('nodejs'),
+    src: nodejs,
     alt: 'Node.js logo',
   },
   {
     name: 'Nest.js',
-    src: getUrl('nestjs'),
+    src: nestjs,
     alt: 'Nest.js logo',
   },
   {
     name: 'PostgreSQL',
-    src: getUrl('postgresql'),
+    src: postgresql,
     alt: 'PostgreSQL logo',
   },
 ];
