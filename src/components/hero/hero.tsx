@@ -72,14 +72,23 @@ export default function Hero(): React.ReactNode {
   const [coords, setCoords] = useState({ x: 100, y: -10 });
 
   useLayoutEffect(() => {
-    if (containerRef.current != null) {
-      containerRef.current.addEventListener('mousemove', (e) => {
-        // TODO: account for scrolled height
-        const x = (e.clientX / window.innerWidth) * 100;
-        const y = (e.clientY / window.innerHeight) * 100;
-        setCoords({ x, y });
-      });
+    const ref = containerRef.current;
+
+    function callback(e: MouseEvent): void {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = ((e.clientY + window.scrollY) / window.innerHeight) * 100;
+      setCoords({ x, y });
     }
+
+    if (ref != null) {
+      ref.addEventListener('mousemove', callback);
+    }
+
+    return () => {
+      if (ref != null) {
+        ref.removeEventListener('mousemove', callback);
+      }
+    };
   }, []);
 
   return (

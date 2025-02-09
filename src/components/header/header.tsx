@@ -17,7 +17,6 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 3px dashed #1a224992;
 `;
 
 const EmailWrapper = styled.div`

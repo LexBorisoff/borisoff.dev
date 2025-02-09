@@ -32,14 +32,14 @@ const StackSection = styled.section`
 `;
 
 interface SliderProps {
-  startAnimation: boolean;
+  $startAnimation: boolean;
 }
 const Slider = styled.div<SliderProps>`
   display: flex;
   gap: ${gap};
 
-  ${({ startAnimation }) =>
-    startAnimation
+  ${({ $startAnimation }) =>
+    $startAnimation
       ? css`
           animation: ${slide} 60s linear infinite;
         `
@@ -89,7 +89,7 @@ const Logo = styled.div`
 
 export default function Stack(): React.ReactNode {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [startAnimation, setStartAnimation] = useState(false);
+  const [$startAnimation, setStartAnimation] = useState(false);
 
   // starts animation only when stack section is in view
   useLayoutEffect(() => {
@@ -121,11 +121,11 @@ export default function Stack(): React.ReactNode {
 
   const slider = useMemo(
     () => (
-      <Slider startAnimation={startAnimation} className="stack-slider">
+      <Slider $startAnimation={$startAnimation} className="stack-slider">
         {logos}
       </Slider>
     ),
-    [logos, startAnimation],
+    [logos, $startAnimation],
   );
 
   return (
