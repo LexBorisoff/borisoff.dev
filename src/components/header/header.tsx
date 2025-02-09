@@ -3,8 +3,6 @@ import { MdOutlineEmail } from 'react-icons/md';
 import { css, styled } from 'styled-components';
 
 const HeaderSection = styled.header`
-  /* position: sticky;
-  top: 0; */
   height: 5rem;
   display: flex;
   justify-content: center;
