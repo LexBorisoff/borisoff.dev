@@ -1,10 +1,13 @@
-import { styled } from 'styled-components';
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { MdOutlineEmail } from 'react-icons/md';
+import { css, styled } from 'styled-components';
 
-const HeaderContainer = styled.header`
+const HeaderSection = styled.header`
+  /* position: sticky;
+  top: 0; */
   height: 5rem;
   display: flex;
   justify-content: center;
-  background-color: #0f0f0f96;
 `;
 
 const Wrapper = styled.div`
@@ -15,18 +18,93 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #1a2249;
+`;
+
+const EmailWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 
   span {
     font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    color: #d9d9d9;
   }
 `;
 
+const LinksWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 1rem;
+`;
+
+const iconCss = css`
+  background: #001352ab;
+  border: 1px solid #475994ab;
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: grid;
+  place-content: center;
+`;
+
+interface IconWrapperProps {
+  clickable?: boolean;
+}
+const IconWrapper = styled.div<IconWrapperProps>`
+  ${iconCss}
+
+  ${({ clickable }) =>
+    clickable &&
+    css`
+      &:hover {
+        cursor: pointer;
+      }
+    `}
+`;
+
+const LinkStyled = styled.a`
+  color: inherit;
+  text-decoration: none;
+  ${iconCss}
+`;
+
+interface LinkProps {
+  children: React.ReactElement;
+  href: string;
+}
+function Link({ children, href }: LinkProps): React.ReactNode {
+  return (
+    <LinkStyled href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </LinkStyled>
+  );
+}
+
 export default function Header(): React.ReactNode {
   return (
-    <HeaderContainer className="header-container">
+    <HeaderSection className="header-container">
       <Wrapper>
-        <span>lex@borisoff.dev</span>
+        <EmailWrapper>
+          <IconWrapper>
+            <MdOutlineEmail size="1.4rem" />
+          </IconWrapper>
+          <span>lex@borisoff.dev</span>
+        </EmailWrapper>
+
+        <LinksWrapper>
+          <Link href="https://github.com/lexborisoff">
+            <FaGithub size="1.4rem" />
+          </Link>
+
+          <Link href="https://linkedin.com/in/lexborisoff">
+            <FaLinkedinIn size="1.4rem" />
+          </Link>
+        </LinksWrapper>
       </Wrapper>
-    </HeaderContainer>
+    </HeaderSection>
   );
 }
