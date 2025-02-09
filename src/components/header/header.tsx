@@ -26,6 +26,7 @@ const EmailWrapper = styled.div`
   gap: 1rem;
 
   span {
+    font-size: 1.2rem;
     font-family: 'Courier Prime', 'Courier New', Courier, monospace;
     color: #d9d9d9;
   }
@@ -40,8 +41,8 @@ const LinksWrapper = styled.div`
 `;
 
 const iconCss = css`
-  background: #4a4a4a7b;
-  border: 1px solid #7e7e7eab;
+  background: #2727277a;
+  border: 1px solid #3a3a3a;
   border-radius: 50%;
   height: 2.5rem;
   width: 2.5rem;
@@ -94,18 +95,18 @@ export default function Header(): React.ReactNode {
       <Wrapper>
         <EmailWrapper>
           <IconWrapper>
-            <MdOutlineEmail size="1.4rem" />
+            <MdOutlineEmail size="1.2rem" />
           </IconWrapper>
           <span>lex@borisoff.dev</span>
         </EmailWrapper>
 
         <LinksWrapper>
           <Link href="https://github.com/lexborisoff">
-            <FaGithub size="1.4rem" />
+            <FaGithub size="1.2rem" />
           </Link>
 
           <Link href="https://linkedin.com/in/lexborisoff">
-            <FaLinkedinIn size="1.4rem" />
+            <FaLinkedinIn size="1.2rem" />
           </Link>
         </LinksWrapper>
       </Wrapper>
