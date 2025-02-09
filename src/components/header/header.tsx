@@ -3,6 +3,7 @@ import { MdOutlineEmail } from 'react-icons/md';
 import { css, styled } from 'styled-components';
 
 const HeaderSection = styled.header`
+  z-index: 1;
   height: 5rem;
   display: flex;
   justify-content: center;
@@ -16,7 +17,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #1a2249;
+  border-bottom: 3px dashed #1a224992;
 `;
 
 const EmailWrapper = styled.div`
@@ -40,13 +41,19 @@ const LinksWrapper = styled.div`
 `;
 
 const iconCss = css`
-  background: #001352ab;
-  border: 1px solid #475994ab;
+  background: #4a4a4a7b;
+  border: 1px solid #7e7e7eab;
   border-radius: 50%;
   height: 2.5rem;
   width: 2.5rem;
   display: grid;
   place-content: center;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #0c2576ab;
+    border: 1px solid #475994ab;
+  }
 `;
 
 interface IconWrapperProps {
