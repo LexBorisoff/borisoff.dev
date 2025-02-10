@@ -2,7 +2,7 @@ import { type ReactNode } from 'react';
 import { styled } from 'styled-components';
 
 import Banner from './components/banner/banner';
-import Contact from './components/contact/contact';
+// import Contact from './components/contact/contact';
 import Hero from './components/hero/hero';
 import Projects from './components/projects/projects';
 import Stack from './components/stack/stack';
@@ -24,7 +24,7 @@ function App(): ReactNode {
       <Hero />
       <Stack />
       <Projects />
-      <Contact />
+      {/* <Contact /> */}
     </Container>
   );
 }
