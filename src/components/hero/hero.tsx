@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 
 import Header from '../header/header';
 
+const gridLineColor = '#81818127';
 const HeroSection = styled.section`
   position: relative;
   height: 40rem;
@@ -10,8 +11,12 @@ const HeroSection = styled.section`
   flex-direction: column;
   justify-content: top;
   background-size: 3rem 3rem;
-  background-image: linear-gradient(to right, #3a3a3a51 1px, transparent 1px),
-    linear-gradient(to bottom, #3a3a3a51 1px, transparent 1px);
+  background-image: linear-gradient(
+      to right,
+      ${gridLineColor} 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, ${gridLineColor} 1px, transparent 1px);
 `;
 
 interface HeroMaskProps {

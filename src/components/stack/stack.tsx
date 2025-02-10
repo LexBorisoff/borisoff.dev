@@ -25,7 +25,7 @@ const StackSection = styled.section`
   border-bottom: 1px solid #1d1d1d;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   overflow: hidden;
   padding: 0 3rem 3rem;
