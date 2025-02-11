@@ -1,5 +1,4 @@
 import css from '../../assets/stack/css.png';
-import docker from '../../assets/stack/docker.png';
 import html from '../../assets/stack/html.png';
 import javascript from '../../assets/stack/javascript.png';
 import nestjs from '../../assets/stack/nestjs.png';
@@ -60,10 +59,5 @@ export const stackLogos: StackLogoInterface[] = [
     name: 'PostgreSQL',
     src: postgresql,
     alt: 'PostgreSQL logo',
-  },
-  {
-    name: 'Docker',
-    src: docker,
-    alt: 'Docker logo',
   },
 ];

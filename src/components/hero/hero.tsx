@@ -19,10 +19,10 @@ const HeroSection = styled.section`
     linear-gradient(to bottom, ${gridLineColor} 1px, transparent 1px);
 `;
 
-interface HeroMaskProps {
+interface SectionMaskProps {
   coords: { x: number; y: number };
 }
-const HeroMask = styled.div<HeroMaskProps>`
+const SectionMask = styled.div<SectionMaskProps>`
   position: absolute;
   z-index: 0;
   top: 0;
@@ -43,7 +43,7 @@ const HeroContent = styled.div`
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  padding-bottom: 2rem;
+  padding-bottom: 4rem;
   cursor: default;
 `;
 
@@ -98,7 +98,7 @@ export default function Hero(): React.ReactNode {
 
   return (
     <HeroSection className="hero-section" ref={containerRef}>
-      <HeroMask coords={coords} />
+      <SectionMask coords={coords} />
       <Header />
       <HeroContent className="hero-content">
         <TextWrapper>

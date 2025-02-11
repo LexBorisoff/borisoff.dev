@@ -2,9 +2,10 @@ import { styled } from 'styled-components';
 
 import Title from '../title/title';
 
-import { projects } from './projects-data';
+import { nodeProjects } from './packages-data';
 
 const ProjectsSection = styled.section`
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -16,17 +17,44 @@ const ProjectsSection = styled.section`
   padding-bottom: 2rem;
 `;
 
+const Subtitle = styled.h3`
+  z-index: 1;
+  margin-bottom: 1.5rem;
+  padding: 0;
+  line-height: 1rem;
+  font-size: 1.3rem;
+  font-weight: normal;
+  font-style: italic;
+  font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+  color: #c0c0c0;
+  text-align: center;
+  line-height: 1.2rem;
+
+  #nodejs-subtitle-text {
+    color: #059200;
+    font-size: inherit;
+    font-weight: bold;
+    font-style: inherit;
+    font-family: inherit;
+  }
+`;
+
+const maskImage = `linear-gradient(450deg,transparent 0,#000000 5%,#000000 95%,transparent 100%)`;
 const ProjectsContainer = styled.div`
+  z-index: 1;
   flex: 1;
-  /* width: 100%; */
-  padding: 0.5rem 2rem 2rem;
+  width: 90%;
+  max-width: 1200px;
+  padding: 0.5rem 3rem 2rem;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: start;
   gap: 2rem;
-  flex-wrap: wrap;
   overflow: auto;
   scrollbar-width: thin;
+
+  mask-image: ${maskImage};
+  -webkit-mask-image: ${maskImage};
 `;
 
 interface IconWrapperMaskProps {
@@ -53,8 +81,8 @@ const IconWrapperMask = styled.div<IconWrapperMaskProps>`
 const ProjectWrapper = styled.div`
   flex: 1;
   min-width: 20rem;
-  max-width: 30rem;
-  min-height: 20rem;
+  max-width: 20rem;
+  min-height: 22rem;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -65,8 +93,8 @@ const ProjectWrapper = styled.div`
   transition: box-shadow 0.2s;
 
   &:hover {
-    box-shadow: 0 0 5px 2px #1d1e64;
-    border-color: #1d1e64;
+    box-shadow: 0 0 3px 2px #035e00a7;
+    border-color: #035e00a7;
 
     ${IconWrapperMask} {
       visibility: visible;
@@ -81,10 +109,9 @@ const IconWrapper = styled.div`
   height: 8rem;
   color: #c6c6c6;
   margin: 0;
-  padding: 0;
   display: grid;
   place-content: center;
-  background-size: 0.9rem 0.9rem;
+  background-size: 1rem 1rem;
   background-image: linear-gradient(
       to right,
       ${gridLineColor} 1px,
@@ -101,52 +128,62 @@ const ProjectInto = styled.div`
   justify-items: start;
 `;
 
-const ProjectTitle = styled.h4`
+const ProjectTitle = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 1.7rem;
+  font-weight: 600;
   white-space: nowrap;
   margin: 0;
   padding: 0;
-  text-align: center;
   color: #c6c6c6;
   font-family: 'Courier Prime', 'Courier New', Courier, monospace;
 `;
 
 const Description = styled.p`
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #c6c6c6;
 `;
 
-const DocsButton = styled.button`
-  height: 2.5rem;
-  border: none;
-  color: white;
-  cursor: pointer;
-  display: grid;
-  place-content: center;
-  font-size: 1.2rem;
-  font-family: 'Courier Prime', 'Courier New', Courier, monospace;
-  background: #252525;
-  transition: background 0.5s;
+const DocsLink = styled.a`
+  text-decoration: none;
+  color: inherit;
 
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
+  button {
+    width: 100%;
+    height: 2.5rem;
+    border: none;
+    outline: none;
+    color: #e4e4e4;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    font-size: 1.2rem;
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    background: #252525;
+    transition: background 0.5s;
 
-  &:hover {
-    background: #1d1e64;
+    &:hover {
+      background: #035e00a7;
+    }
   }
 `;
 
-export default function Projects(): React.ReactNode {
+export default function Packages(): React.ReactNode {
   return (
     <ProjectsSection className="projects-container">
-      <Title>Projects</Title>
+      <Title css={{ marginBottom: 0, zIndex: 1 }}>Packages</Title>
+      <Subtitle>
+        Check out my <span id="nodejs-subtitle-text">Node.js</span> libraries
+        and CLIs.
+      </Subtitle>
+
       <ProjectsContainer>
-        {projects.map(({ name, Icon, description, url }) => (
+        {nodeProjects.map(({ name, Icon, description, url }) => (
           <ProjectWrapper key={name}>
             <IconWrapper>
-              <IconWrapperMask color="#00115e8c" coords={{ x: 90, y: 0 }} />
+              <IconWrapperMask color="#035e00a7" coords={{ x: 90, y: 0 }} />
               <IconWrapperMask color="#5e00008b" coords={{ x: 0, y: 90 }} />
               <Icon size="3rem" />
             </IconWrapper>
@@ -156,11 +193,9 @@ export default function Projects(): React.ReactNode {
               <Description>{description}</Description>
             </ProjectInto>
 
-            <DocsButton>
-              <a href={url} target="_blank" rel="noopener noreferrer">
-                Docs
-              </a>
-            </DocsButton>
+            <DocsLink href={url} target="_blank" rel="noopener noreferrer">
+              <button>Docs</button>
+            </DocsLink>
           </ProjectWrapper>
         ))}
       </ProjectsContainer>
