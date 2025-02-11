@@ -1,8 +1,7 @@
 import { IconType } from 'react-icons';
 import { LuFolderTree, LuScrollText } from 'react-icons/lu';
-import { MdOutlineWebhook } from 'react-icons/md';
 import { SiEslint } from 'react-icons/si';
-import { TbPrompt, TbWorldSearch } from 'react-icons/tb';
+import { TbFishHook, TbPrompt, TbWorldSearch } from 'react-icons/tb';
 
 interface ProjectInterface {
   name: string;
@@ -14,7 +13,7 @@ interface ProjectInterface {
 export const nodeProjects: ProjectInterface[] = [
   {
     name: 'fs-hooks',
-    Icon: MdOutlineWebhook,
+    Icon: TbFishHook,
     url: 'https://github.com/LexBorisoff/fs-hooks',
     description: 'Library for working with the file system in Node.js',
   },

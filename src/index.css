@@ -24,6 +24,11 @@ body {
   font-family: Poppins, sans-serif;
 }
 
+html {
+  background-image: radial-gradient(#3f3f3f 1px, transparent 0);
+  background-size: 3rem 3rem;
+}
+
 p,
 span,
 input,

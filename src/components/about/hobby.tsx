@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import Title from '../title/title';
+import Title, { Subtitle } from '../title/title';
 
 import { nodeProjects } from './packages-data';
 
@@ -11,37 +11,12 @@ const ProjectsSection = styled.section`
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  background-image: radial-gradient(#3f3f3f 1px, transparent 0);
-  background-size: 3rem 3rem;
   overflow: hidden;
   padding-bottom: 2rem;
 `;
 
-const Subtitle = styled.h3`
-  z-index: 1;
-  margin-bottom: 1.5rem;
-  padding: 0;
-  line-height: 1rem;
-  font-size: 1.3rem;
-  font-weight: normal;
-  font-style: italic;
-  font-family: 'Courier Prime', 'Courier New', Courier, monospace;
-  color: #c0c0c0;
-  text-align: center;
-  line-height: 1.2rem;
-
-  #nodejs-subtitle-text {
-    color: #059200;
-    font-size: inherit;
-    font-weight: bold;
-    font-style: inherit;
-    font-family: inherit;
-  }
-`;
-
 const maskImage = `linear-gradient(450deg,transparent 0,#000000 5%,#000000 95%,transparent 100%)`;
 const ProjectsContainer = styled.div`
-  z-index: 1;
   flex: 1;
   width: 90%;
   max-width: 1200px;
@@ -51,8 +26,6 @@ const ProjectsContainer = styled.div`
   align-items: start;
   gap: 2rem;
   overflow: auto;
-  scrollbar-width: thin;
-
   mask-image: ${maskImage};
   -webkit-mask-image: ${maskImage};
 `;
@@ -174,10 +147,9 @@ const DocsLink = styled.a`
 export default function Packages(): React.ReactNode {
   return (
     <ProjectsSection className="projects-container">
-      <Title css={{ marginBottom: 0, zIndex: 1 }}>Packages</Title>
+      <Title css={{ marginBottom: 0, zIndex: 1 }}>My Hobby</Title>
       <Subtitle>
-        Check out my <span id="nodejs-subtitle-text">Node.js</span> libraries
-        and CLIs.
+        Building tools and libraries that improve developer experience
       </Subtitle>
 
       <ProjectsContainer>

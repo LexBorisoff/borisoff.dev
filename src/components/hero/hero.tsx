@@ -65,8 +65,8 @@ const TextWrapper = styled.div`
     font-size: 4rem;
     font-weight: 500;
     line-height: 5rem;
-    background-clip: text;
     background: linear-gradient(180deg, #bbbbbb 10%, #afafaf 40%, #797979 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
