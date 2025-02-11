@@ -118,6 +118,7 @@ const IconWrapper = styled.div`
       transparent 1px
     ),
     linear-gradient(to bottom, ${gridLineColor} 1px, transparent 1px);
+  background-position: -2px -2px;
 `;
 
 const ProjectInto = styled.div`
