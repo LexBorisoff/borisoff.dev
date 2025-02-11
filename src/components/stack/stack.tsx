@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
-import { keyframes, styled } from 'styled-components';
+import { useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { css, keyframes, styled } from 'styled-components';
 
 import Title from '../title/title';
 
@@ -16,22 +16,35 @@ const slide = keyframes`
   }
 `;
 
-const maskImage = `linear-gradient(450deg,transparent 0,#000000 15%,#000000 85%,transparent 100%)`;
-
-const StackContainer = styled.div`
+const StackSection = styled.section`
   width: 100%;
-  min-width: 500px;
   background: #131313;
   border-top: 1px solid #1d1d1d;
   border-bottom: 1px solid #1d1d1d;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   overflow: hidden;
   padding: 0 3rem 3rem;
 `;
 
+interface SliderProps {
+  $startAnimation: boolean;
+}
+const Slider = styled.div<SliderProps>`
+  display: flex;
+  gap: ${gap};
+
+  ${({ $startAnimation }) =>
+    $startAnimation
+      ? css`
+          animation: ${slide} 60s linear infinite;
+        `
+      : null}
+`;
+
+const maskImage = `linear-gradient(450deg,transparent 0,#000000 15%,#000000 85%,transparent 100%)`;
 const SliderWrapper = styled.div`
   flex: 1;
   width: 100%;
@@ -48,12 +61,6 @@ const SliderWrapper = styled.div`
   -webkit-mask-image: ${maskImage};
 `;
 
-const Slider = styled.div`
-  display: flex;
-  gap: ${gap};
-  animation: ${slide} 60s linear infinite;
-`;
-
 const Logo = styled.div`
   min-width: 6rem;
   height: 6rem;
@@ -62,18 +69,38 @@ const Logo = styled.div`
   object-fit: contain;
 
   img {
-    filter: grayscale(100%);
     transition: filter 0.5s;
-  }
 
-  &:hover {
-    img {
-      filter: grayscale(0%);
-    }
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
   }
 `;
 
 export default function Stack(): React.ReactNode {
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [$startAnimation, setStartAnimation] = useState(false);
+
+  // starts animation only when stack section is in view
+  useLayoutEffect(() => {
+    const ref = sliderRef.current;
+    const observer = new IntersectionObserver(([entry]) => {
+      setStartAnimation((prev) => prev || entry.isIntersecting);
+    });
+
+    if (ref != null) {
+      observer.observe(ref);
+    }
+
+    return () => {
+      if (ref != null) {
+        observer.unobserve(ref);
+      }
+    };
+  }, []);
+
   const logos = useMemo(
     () =>
       stackLogos.map(({ src, alt, name }) => (
@@ -84,13 +111,22 @@ export default function Stack(): React.ReactNode {
     [],
   );
 
+  const slider = useMemo(
+    () => (
+      <Slider $startAnimation={$startAnimation} className="stack-slider">
+        {logos}
+      </Slider>
+    ),
+    [logos, $startAnimation],
+  );
+
   return (
-    <StackContainer className="stack-container">
+    <StackSection className="stack-section">
       <Title>My Stack</Title>
-      <SliderWrapper className="logos-wrapper">
-        <Slider>{logos}</Slider>
-        <Slider>{logos}</Slider>
+      <SliderWrapper ref={sliderRef} className="stack-logos-wrapper">
+        {slider}
+        {slider}
       </SliderWrapper>
-    </StackContainer>
+    </StackSection>
   );
 }

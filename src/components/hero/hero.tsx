@@ -1,21 +1,41 @@
-import { useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 
 import Header from '../header/header';
 
-interface HeroContainerProps {
-  coords: { x: number; y: number };
-}
-const HeroContainer = styled.div<HeroContainerProps>`
+const gridLineColor = '#81818127';
+const HeroSection = styled.section`
+  position: relative;
   height: 40rem;
   display: flex;
   flex-direction: column;
   justify-content: top;
+  background-size: 3rem 3rem;
+  background-image: linear-gradient(
+      to right,
+      ${gridLineColor} 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, ${gridLineColor} 1px, transparent 1px);
+`;
+
+interface SectionMaskProps {
+  coords: { x: number; y: number };
+}
+const SectionMask = styled.div<SectionMaskProps>`
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  flex: 1;
   background: ${({ coords: { x, y } }) =>
-    `radial-gradient(40rem 40rem at ${x}% ${y}%, #00115e, transparent)`};
+    `radial-gradient(40rem 40rem at ${x}% ${y}%, #00115e8c, transparent)`};
 `;
 
 const HeroContent = styled.div`
+  z-index: 1;
   flex: 1;
   width: 100%;
   display: flex;
@@ -23,12 +43,8 @@ const HeroContent = styled.div`
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  padding-bottom: 2rem;
-
-  cursor:
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><text y="13" font-size="13">✨</text></svg>')
-      10 10,
-    auto;
+  padding-bottom: 4rem;
+  cursor: default;
 `;
 
 const TextWrapper = styled.div`
@@ -39,10 +55,10 @@ const TextWrapper = styled.div`
   gap: 1.5rem;
 
   .hero-intro-text {
-    font-size: 1.7rem;
+    font-size: 2rem;
     font-family: 'Courier Prime', 'Courier New', Courier, monospace;
-    font-weight: bold;
-    color: #999999;
+    font-weight: 500;
+    color: #b8b8b8;
   }
 
   .hero-main-text {
@@ -60,33 +76,38 @@ export default function Hero(): React.ReactNode {
   const containerRef = useRef<HTMLDivElement>(null);
   const [coords, setCoords] = useState({ x: 100, y: -10 });
 
-  useEffect(() => {
-    if (containerRef.current != null) {
-      containerRef.current.addEventListener('mousemove', (e) => {
-        // TODO: account for scrolled height
-        const x = (e.clientX / window.innerWidth) * 100;
-        const y = (e.clientY / window.innerHeight) * 100;
-        setCoords({ x, y });
-      });
+  useLayoutEffect(() => {
+    const ref = containerRef.current;
+
+    function callback(e: MouseEvent): void {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = ((e.clientY + window.scrollY) / window.innerHeight) * 100;
+      setCoords({ x, y });
     }
+
+    if (ref != null) {
+      ref.addEventListener('mousemove', callback);
+    }
+
+    return () => {
+      if (ref != null) {
+        ref.removeEventListener('mousemove', callback);
+      }
+    };
   }, []);
 
   return (
-    <HeroContainer
-      className="hero-container"
-      ref={containerRef}
-      coords={coords}
-    >
+    <HeroSection className="hero-section" ref={containerRef}>
+      <SectionMask coords={coords} />
       <Header />
-
       <HeroContent className="hero-content">
         <TextWrapper>
           <span className="hero-intro-text">{"Hi, I'm Lex 👋"}</span>
           <span className="hero-main-text">
-            I build practical things and magical web experiences
+            I build practical tools and magical web experiences
           </span>
         </TextWrapper>
       </HeroContent>
-    </HeroContainer>
+    </HeroSection>
   );
 }
