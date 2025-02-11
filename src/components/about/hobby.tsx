@@ -15,6 +15,12 @@ const ProjectsSection = styled.section`
   padding-bottom: 2rem;
 `;
 
+const SubtitleSpan = styled.span`
+  font: inherit;
+  font-weight: 600;
+  color: #058a00;
+`;
+
 const maskImage = `linear-gradient(450deg,transparent 0,#000000 5%,#000000 95%,transparent 100%)`;
 const ProjectsContainer = styled.div`
   flex: 1;
@@ -52,10 +58,8 @@ const IconWrapperMask = styled.div<IconWrapperMaskProps>`
 `;
 
 const ProjectWrapper = styled.div`
-  flex: 1;
-  min-width: 20rem;
-  max-width: 20rem;
-  min-height: 22rem;
+  flex: 0 0 20rem;
+  height: 22rem;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -149,7 +153,8 @@ export default function Packages(): React.ReactNode {
     <ProjectsSection className="projects-container">
       <Title css={{ marginBottom: 0, zIndex: 1 }}>My Hobby</Title>
       <Subtitle>
-        Building tools and libraries that improve developer experience
+        Building <SubtitleSpan>tools</SubtitleSpan> and{' '}
+        <SubtitleSpan>libraries</SubtitleSpan> that improve developer experience
       </Subtitle>
 
       <ProjectsContainer>

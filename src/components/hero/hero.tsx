@@ -31,7 +31,7 @@ const SectionMask = styled.div<SectionMaskProps>`
   width: 100%;
   flex: 1;
   background: ${({ coords: { x, y } }) =>
-    `radial-gradient(40rem 40rem at ${x}% ${y}%, #00115e8c, transparent)`};
+    `radial-gradient(40rem 40rem at ${x}% ${y}%, #00115e76, transparent)`};
 `;
 
 const HeroContent = styled.div`
