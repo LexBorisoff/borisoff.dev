@@ -1,6 +1,7 @@
 import { IconType } from 'react-icons';
 import { LuFolderTree, LuScrollText } from 'react-icons/lu';
 import { MdOutlineWebhook } from 'react-icons/md';
+import { SiEslint } from 'react-icons/si';
 import { TbPrompt, TbWorldSearch } from 'react-icons/tb';
 
 interface ProjectInterface {
@@ -10,7 +11,7 @@ interface ProjectInterface {
   description: string;
 }
 
-export const projects: ProjectInterface[] = [
+export const nodeProjects: ProjectInterface[] = [
   {
     name: 'fs-hooks',
     Icon: MdOutlineWebhook,
@@ -40,6 +41,13 @@ export const projects: ProjectInterface[] = [
     name: 'prompts',
     Icon: TbPrompt,
     url: 'https://github.com/LexBorisoff/prompts',
-    description: 'Interactive prompts',
+    description:
+      'Interactive prompts with abstracted methods and improved rendering',
+  },
+  {
+    name: 'eslint-plugin',
+    Icon: SiEslint,
+    url: 'https://github.com/LexBorisoff/eslint-plugin',
+    description: 'ESLint plugin with my favourite config rules',
   },
 ];

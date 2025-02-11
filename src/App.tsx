@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 import Banner from './components/banner/banner';
 // import Contact from './components/contact/contact';
 import Hero from './components/hero/hero';
-import Projects from './components/projects/projects';
+import Packages from './components/packages/packages';
 import Stack from './components/stack/stack';
 
 const UNDER_CONSTRUCTION = import.meta.env.VITE_UNDER_CONSTRUCTION === 'true';
@@ -23,7 +23,7 @@ function App(): ReactNode {
 
       <Hero />
       <Stack />
-      <Projects />
+      <Packages />
       {/* <Contact /> */}
     </Container>
   );

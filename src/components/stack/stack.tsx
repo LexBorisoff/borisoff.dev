@@ -16,8 +16,6 @@ const slide = keyframes`
   }
 `;
 
-const maskImage = `linear-gradient(450deg,transparent 0,#000000 15%,#000000 85%,transparent 100%)`;
-
 const StackSection = styled.section`
   width: 100%;
   background: #131313;
@@ -46,6 +44,7 @@ const Slider = styled.div<SliderProps>`
       : null}
 `;
 
+const maskImage = `linear-gradient(450deg,transparent 0,#000000 15%,#000000 85%,transparent 100%)`;
 const SliderWrapper = styled.div`
   flex: 1;
   width: 100%;
@@ -70,7 +69,6 @@ const Logo = styled.div`
   object-fit: contain;
 
   img {
-    filter: grayscale(100%);
     transition: filter 0.5s;
 
     user-select: none;
@@ -78,12 +76,6 @@ const Logo = styled.div`
     -webkit-user-drag: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-  }
-
-  &:hover {
-    img {
-      filter: none;
-    }
   }
 `;
 
