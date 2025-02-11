@@ -1,0 +1,19 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync-dev:
+    name: Sync main to dev
+    permissions:
+      contents: write
+    uses: LexBorisoff/workflows/.github/workflows/sync-dev.yml@main
+    secrets:
+      DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
