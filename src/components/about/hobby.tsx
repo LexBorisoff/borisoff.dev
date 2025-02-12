@@ -36,27 +36,6 @@ const ProjectsContainer = styled.div`
   -webkit-mask-image: ${maskImage};
 `;
 
-interface IconWrapperMaskProps {
-  color: string;
-  coords: {
-    x: number;
-    y: number;
-  };
-}
-
-const IconWrapperMask = styled.div<IconWrapperMaskProps>`
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  flex: 1;
-  background: ${({ color, coords: { x, y } }) =>
-    `radial-gradient(10rem 10rem at ${x}% ${y}%, ${color}, transparent)`};
-  visibility: hidden;
-`;
-
 const ProjectWrapper = styled.div`
   flex: 0 0 20rem;
   height: 22rem;
@@ -73,8 +52,12 @@ const ProjectWrapper = styled.div`
     box-shadow: 0 0 3px 2px #035e00a7;
     border-color: #035e00a7;
 
-    ${IconWrapperMask} {
+    .icon-wrapper-mask {
       visibility: visible;
+    }
+
+    .docs-link-button {
+      background: #035e00a7;
     }
   }
 `;
@@ -96,6 +79,26 @@ const IconWrapper = styled.div`
     ),
     linear-gradient(to bottom, ${gridLineColor} 1px, transparent 1px);
   background-position: -2px -2px;
+`;
+
+interface IconWrapperMaskProps {
+  color: string;
+  coords: {
+    x: number;
+    y: number;
+  };
+}
+const IconWrapperMask = styled.div<IconWrapperMaskProps>`
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  background: ${({ color, coords: { x, y } }) =>
+    `radial-gradient(10rem 10rem at ${x}% ${y}%, ${color}, transparent)`};
+  visibility: hidden;
 `;
 
 const ProjectInto = styled.div`
@@ -141,10 +144,6 @@ const DocsLink = styled.a`
     font-family: 'Courier Prime', 'Courier New', Courier, monospace;
     background: #252525;
     transition: background 0.5s;
-
-    &:hover {
-      background: #035e00a7;
-    }
   }
 `;
 
@@ -161,8 +160,16 @@ export default function Packages(): React.ReactNode {
         {nodeProjects.map(({ name, Icon, description, url }) => (
           <ProjectWrapper key={name}>
             <IconWrapper>
-              <IconWrapperMask color="#035e00a7" coords={{ x: 90, y: 0 }} />
-              <IconWrapperMask color="#5e00008b" coords={{ x: 0, y: 90 }} />
+              <IconWrapperMask
+                className="icon-wrapper-mask"
+                color="#035e00a7"
+                coords={{ x: 90, y: 0 }}
+              />
+              <IconWrapperMask
+                className="icon-wrapper-mask"
+                color="#5e00008b"
+                coords={{ x: 0, y: 90 }}
+              />
               <Icon size="3rem" />
             </IconWrapper>
 
@@ -172,7 +179,7 @@ export default function Packages(): React.ReactNode {
             </ProjectInto>
 
             <DocsLink href={url} target="_blank" rel="noopener noreferrer">
-              <button>Docs</button>
+              <button className="docs-link-button">Docs</button>
             </DocsLink>
           </ProjectWrapper>
         ))}

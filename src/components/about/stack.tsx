@@ -44,7 +44,7 @@ const Slider = styled.div<SliderProps>`
       : null}
 `;
 
-const maskImage = `linear-gradient(450deg,transparent 0,#000000 15%,#000000 85%,transparent 100%)`;
+const maskImage = `linear-gradient(90deg,transparent 0,#000000 15%,#000000 85%,transparent 100%)`;
 const SliderWrapper = styled.div`
   flex: 1;
   width: 100%;
@@ -64,7 +64,7 @@ const SliderWrapper = styled.div`
 const Logo = styled.div`
   min-width: 6rem;
   height: 6rem;
-  border-radius: 1rem;
+  border-radius: 0.7rem;
   overflow: hidden;
   object-fit: contain;
 
