@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 import { styled, keyframes, css } from 'styled-components';
 
@@ -55,7 +55,7 @@ const AdjectiveSpan = styled.span`
     ${exit} ${animation.time}s ${animation.delay}s ease-in-out forwards;
 `;
 
-const WebsiteContainer = styled.div`
+const DragContainer = styled.div`
   position: relative;
   flex: 1 100%;
   width: 95%;
@@ -63,6 +63,24 @@ const WebsiteContainer = styled.div`
   background: #4949491d;
   border: 0.4rem dotted #363636a6;
   border-radius: 1rem;
+`;
+
+const FrontendBounds = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: calc(50% + 45vh * 0.5);
+  pointer-events: none;
+`;
+
+const BackendBounds = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: calc(50% + 45vh * 0.5);
+  pointer-events: none;
 `;
 
 const moveDashesRight = keyframes`
@@ -115,25 +133,59 @@ const ProcessLine = styled.div<ProcessLineProps>`
   }}
 `;
 
-const Website = styled.div`
+type AppStateType = 'initial' | 'frontend' | 'backend' | 'fullstack';
+
+const appCss: Record<AppStateType, ReturnType<typeof css>> = {
+  initial: css`
+    border: 0.3rem dashed #183594;
+    border-radius: 1rem;
+    display: grid;
+    place-content: center;
+    overflow: hidden;
+    background-color: #1835945e;
+    background-size: 4rem 4rem;
+    background-image: linear-gradient(to right, #183594 1px, transparent 1px),
+      linear-gradient(to bottom, #183594 1px, transparent 1px);
+  `,
+  frontend: css``,
+  backend: css``,
+  fullstack: css``,
+};
+
+interface AppProps {
+  $state: AppStateType;
+}
+
+const App = styled.div<AppProps>`
   position: absolute;
   top: 50%;
   left: 50%;
   height: 45vh;
   width: 45vh;
   transform: translate(-50%, -50%);
-  border: 0.3rem dashed #183594;
-  border-radius: 1rem;
-  display: grid;
-  place-content: center;
-  overflow: hidden;
-  background-color: #1835945e;
-  background-size: 4rem 4rem;
-  background-image: linear-gradient(to right, #183594 1px, transparent 1px),
-    linear-gradient(to bottom, #183594 1px, transparent 1px);
+
+  ${({ $state = 'initial' }) => appCss[$state]}
 `;
 
-const DraggableFrontend = styled.div`
+interface DraggingProps {
+  $dragging?: boolean;
+}
+
+const draggingFrontendCss = css`
+  background-color: #8a00e65a;
+  background-size: 2rem 2rem;
+  background-image: linear-gradient(to right, #8a00e6ae 1px, transparent 1px),
+    linear-gradient(to bottom, #8a00e6ae 1px, transparent 1px);
+`;
+
+const draggingBackendCss = css`
+  background-color: #990000a7;
+  background-size: 2rem 2rem;
+  background-image: linear-gradient(to right, #be0202d2 1px, transparent 1px),
+    linear-gradient(to bottom, #be0202d2 1px, transparent 1px);
+`;
+
+const DraggableFrontend = styled.div<DraggingProps>`
   position: absolute;
   top: 5%;
   left: 5%;
@@ -147,16 +199,16 @@ const DraggableFrontend = styled.div`
   text-align: center;
   cursor: grab;
   font-size: 1.2rem;
+  pointer-events: all;
+
+  ${({ $dragging }) => $dragging && draggingFrontendCss}
 
   &:hover {
-    background-color: #8a00e65a;
-    background-size: 2rem 2rem;
-    background-image: linear-gradient(to right, #8a00e6ae 1px, transparent 1px),
-      linear-gradient(to bottom, #8a00e6ae 1px, transparent 1px);
+    ${draggingFrontendCss}
   }
 `;
 
-const DraggableBackend = styled.div`
+const DraggableBackend = styled.div<DraggingProps>`
   position: absolute;
   bottom: 5%;
   right: 5%;
@@ -170,12 +222,12 @@ const DraggableBackend = styled.div`
   text-align: center;
   font-size: 1.2rem;
   cursor: grab;
+  pointer-events: all;
+
+  ${({ $dragging }) => $dragging && draggingBackendCss}
 
   &:hover {
-    background-color: #990000a7;
-    background-size: 2rem 2rem;
-    background-image: linear-gradient(to right, #be0202d2 1px, transparent 1px),
-      linear-gradient(to bottom, #be0202d2 1px, transparent 1px);
+    ${draggingBackendCss}
   }
 `;
 
@@ -194,8 +246,26 @@ const adjectives = [
   'sophisticated',
 ];
 
+interface FullstackState {
+  frontend: boolean;
+  backend: boolean;
+}
+
+const initialFullstackState: FullstackState = {
+  frontend: false,
+  backend: false,
+};
+
 export default function Expertise(): React.ReactNode {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const frontendRef = useRef<HTMLDivElement>(null);
+  const backendRef = useRef<HTMLDivElement>(null);
+
   const [adjective, setAdjective] = useState(adjectives[0]);
+  const [dropped, setDropped] = useState<FullstackState>(initialFullstackState);
+  const [dragging, setDragging] = useState<FullstackState>(
+    initialFullstackState,
+  );
 
   useEffect(() => {
     const interval = setInterval(
@@ -213,6 +283,38 @@ export default function Expertise(): React.ReactNode {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const container = containerRef.current;
+    const frontend = frontendRef.current;
+    const backend = backendRef.current;
+
+    function handleDragging(side: keyof FullstackState, value: boolean) {
+      return function () {
+        setDragging((prev) => ({ ...prev, [side]: value }));
+      };
+    }
+
+    const dragFE = handleDragging('frontend', true);
+    const dragBE = handleDragging('backend', true);
+    function drop(): void {
+      setDragging(initialFullstackState);
+    }
+
+    if (container != null && frontend != null && backend != null) {
+      frontend.addEventListener('mousedown', dragFE);
+      backend.addEventListener('mousedown', dragBE);
+      container.addEventListener('mouseup', drop);
+    }
+
+    return () => {
+      if (container != null && frontend != null && backend != null) {
+        frontend.removeEventListener('mousedown', dragFE);
+        backend.removeEventListener('mousedown', dragBE);
+        container.removeEventListener('mouseup', drop);
+      }
+    };
+  }, []);
+
   return (
     <ExpertiseSection>
       <Title css={{ marginBottom: 0 }}>My Expertise & Passion</Title>
@@ -221,19 +323,27 @@ export default function Expertise(): React.ReactNode {
         applications
       </Subtitle>
 
-      <WebsiteContainer>
+      <DragContainer ref={containerRef}>
         <ProcessLine $position="left" $direction="right" />
         <ProcessLine $position="right" $direction="left" />
-        <Website />
+        <App $state="initial" />
 
-        <Draggable bounds="parent">
-          <DraggableFrontend>Frontend</DraggableFrontend>
-        </Draggable>
+        <BackendBounds>
+          <Draggable bounds="parent">
+            <DraggableBackend ref={backendRef} $dragging={dragging.backend}>
+              Backend
+            </DraggableBackend>
+          </Draggable>
+        </BackendBounds>
 
-        <Draggable bounds="parent">
-          <DraggableBackend>Backend</DraggableBackend>
-        </Draggable>
-      </WebsiteContainer>
+        <FrontendBounds>
+          <Draggable bounds="parent">
+            <DraggableFrontend ref={frontendRef} $dragging={dragging.frontend}>
+              Frontend
+            </DraggableFrontend>
+          </Draggable>
+        </FrontendBounds>
+      </DragContainer>
     </ExpertiseSection>
   );
 }
