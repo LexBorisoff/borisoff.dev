@@ -23,9 +23,9 @@ function App(): ReactNode {
       )}
 
       <Hero />
-      <Stack />
       <Expertise />
       <Hobby />
+      <Stack />
       {/* <Contact /> */}
     </Container>
   );

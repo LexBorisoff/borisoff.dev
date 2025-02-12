@@ -11,7 +11,7 @@ const animation = {
 
 const ExpertiseSection = styled.section`
   position: relative;
-  height: 90vh;
+  height: 95vh;
   min-height: 40rem;
   display: flex;
   flex-direction: column;

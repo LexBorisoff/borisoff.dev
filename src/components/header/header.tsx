@@ -3,7 +3,11 @@ import { MdOutlineEmail } from 'react-icons/md';
 import { css, styled } from 'styled-components';
 
 const HeaderSection = styled.header`
-  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
   height: 5rem;
   display: flex;
   justify-content: center;
@@ -26,7 +30,7 @@ const EmailWrapper = styled.div`
   gap: 1rem;
 
   span {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-family: 'Courier Prime', 'Courier New', Courier, monospace;
     color: #d9d9d9;
   }

@@ -39,7 +39,7 @@ const Slider = styled.div<SliderProps>`
   ${({ $startAnimation }) =>
     $startAnimation
       ? css`
-          animation: ${slide} 60s linear infinite;
+          animation: ${slide} 45s linear infinite;
         `
       : null}
 `;

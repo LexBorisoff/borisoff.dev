@@ -1,28 +1,23 @@
-import { useLayoutEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 
 import Header from '../header/header';
 
-const gridLineColor = '#81818127';
 const HeroSection = styled.section`
   position: relative;
-  height: 40rem;
+  height: 105vh;
+  max-height: 50rem;
   display: flex;
   flex-direction: column;
   justify-content: top;
+  background-color: #0f0f0f;
   background-size: 3rem 3rem;
-  background-image: linear-gradient(
-      to right,
-      ${gridLineColor} 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, ${gridLineColor} 1px, transparent 1px);
+  background-image: linear-gradient(to right, #81818127 1px, transparent 1px),
+    linear-gradient(to bottom, #81818127 1px, transparent 1px);
+  background-position: -2px -2px;
+  mask-image: linear-gradient(#000000 90%, transparent 100%);
 `;
 
-interface SectionMaskProps {
-  coords: { x: number; y: number };
-}
-const SectionMask = styled.div<SectionMaskProps>`
+const SectionMask = styled.div`
   position: absolute;
   z-index: 0;
   top: 0;
@@ -30,8 +25,10 @@ const SectionMask = styled.div<SectionMaskProps>`
   height: 100%;
   width: 100%;
   flex: 1;
-  background: ${({ coords: { x, y } }) =>
-    `radial-gradient(40rem 40rem at ${x}% ${y}%, #00115e76, transparent)`};
+  background: radial-gradient(40rem 40rem at 10% 0%, #00115e76, transparent),
+    radial-gradient(40rem 40rem at 0% 100%, #5e000058, transparent),
+    radial-gradient(40rem 40rem at 100% 0%, #6e003c5a, transparent),
+    radial-gradient(40rem 40rem at 90% 100%, #6e54005a, transparent);
 `;
 
 const HeroContent = styled.div`
@@ -43,8 +40,6 @@ const HeroContent = styled.div`
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  padding-bottom: 4rem;
-  cursor: default;
 `;
 
 const TextWrapper = styled.div`
@@ -58,6 +53,7 @@ const TextWrapper = styled.div`
     font-size: 2rem;
     font-family: 'Courier Prime', 'Courier New', Courier, monospace;
     font-weight: 500;
+    font-style: italic;
     color: #b8b8b8;
   }
 
@@ -73,32 +69,9 @@ const TextWrapper = styled.div`
 `;
 
 export default function Hero(): React.ReactNode {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [coords, setCoords] = useState({ x: 100, y: -10 });
-
-  useLayoutEffect(() => {
-    const ref = containerRef.current;
-
-    function callback(e: MouseEvent): void {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = ((e.clientY + window.scrollY) / window.innerHeight) * 100;
-      setCoords({ x, y });
-    }
-
-    if (ref != null) {
-      ref.addEventListener('mousemove', callback);
-    }
-
-    return () => {
-      if (ref != null) {
-        ref.removeEventListener('mousemove', callback);
-      }
-    };
-  }, []);
-
   return (
-    <HeroSection className="hero-section" ref={containerRef}>
-      <SectionMask coords={coords} />
+    <HeroSection className="hero-section">
+      <SectionMask />
       <Header />
       <HeroContent className="hero-content">
         <TextWrapper>
