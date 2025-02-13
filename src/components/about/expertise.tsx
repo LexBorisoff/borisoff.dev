@@ -13,6 +13,7 @@ type AppStateType = 'initial' | 'frontend' | 'backend' | 'fullstack';
 const adjectives = [
   'robust',
   'secure',
+  'tested',
   'elegant',
   'dynamic',
   'scalable',
@@ -401,6 +402,54 @@ const App = styled.div<AppProps>`
         : null};
 `;
 
+const DescriptionWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: 100%;
+  max-width: 1250px;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+`;
+
+interface DescriptionProps {
+  $visible: boolean;
+}
+const expertiseDescCss = css<DescriptionProps>`
+  width: 20rem;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #cbcbcb;
+  padding: 1rem;
+  border-radius: 1rem;
+
+  ${({ $visible }) =>
+    $visible
+      ? css`
+          visibility: visible;
+          transform: translateY(0);
+          transition: transform 0.5s linear;
+        `
+      : css`
+          visibility: hidden;
+          transform: translateY(1rem);
+        `}
+`;
+
+const FrontendDescription = styled.div<DescriptionProps>`
+  ${expertiseDescCss}
+`;
+
+const BackendDescription = styled.div<DescriptionProps>`
+  grid-column: 3;
+  ${expertiseDescCss}
+`;
+
 interface FullstackState {
   frontend: boolean;
   backend: boolean;
@@ -593,18 +642,18 @@ export default function Expertise(): React.ReactNode {
           )}
         </App>
 
-        {appState !== 'backend' && appState !== 'fullstack' && (
-          <BackendBounds>
+        <BackendBounds>
+          {!isFunctional && (
             <Draggable bounds="parent">
               <DraggableBackend ref={backendRef} $dragging={dragging.backend}>
                 <span>Backend</span>
               </DraggableBackend>
             </Draggable>
-          </BackendBounds>
-        )}
+          )}
+        </BackendBounds>
 
-        {appState !== 'frontend' && appState !== 'fullstack' && (
-          <FrontendBounds>
+        <FrontendBounds>
+          {!isPainted && (
             <Draggable bounds="parent">
               <DraggableFrontend
                 ref={frontendRef}
@@ -613,8 +662,20 @@ export default function Expertise(): React.ReactNode {
                 <span>Frontend</span>
               </DraggableFrontend>
             </Draggable>
-          </FrontendBounds>
-        )}
+          )}
+        </FrontendBounds>
+
+        <DescriptionWrapper>
+          <FrontendDescription $visible={isPainted}>
+            I craft intuitive, visually stunning, and highly responsive frontend
+            interfaces that improves user engagement and experience
+          </FrontendDescription>
+
+          <BackendDescription $visible={isFunctional}>
+            I build robust, scalable, and efficient backend systems that ensure
+            seamless data flow, security, and high performance
+          </BackendDescription>
+        </DescriptionWrapper>
       </DragContainer>
     </ExpertiseSection>
   );
