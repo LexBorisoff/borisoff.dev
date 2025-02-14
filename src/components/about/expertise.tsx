@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 import { BsDatabaseLock } from 'react-icons/bs';
 import { GoShieldLock } from 'react-icons/go';
-import { LuServer } from 'react-icons/lu';
-import { MdOutlineSettings } from 'react-icons/md';
+import { LuLayoutTemplate, LuPaintbrush } from 'react-icons/lu';
+import { MdClose, MdOutlineSettings } from 'react-icons/md';
 import { styled, keyframes, css } from 'styled-components';
 
 import Title, { Subtitle } from '../title/title';
@@ -141,7 +141,7 @@ interface DraggableProps {
   $dragging?: boolean;
 }
 
-const draggableCss = css`
+const draggableCss = css<DraggableProps>`
   position: absolute;
   top: calc(50% - 35vh / 2);
   height: 35vh;
@@ -151,7 +151,7 @@ const draggableCss = css`
   display: grid;
   place-content: center;
   text-align: center;
-  cursor: grab;
+  cursor: ${({ $dragging }) => ($dragging ? 'grabbing' : 'grab')};
   font-size: 1.5rem;
   pointer-events: all;
   backdrop-filter: blur(3px);
@@ -234,11 +234,12 @@ const MovingDashes = styled.div<MovingDashesProps>`
 
 interface BackendDashesProps {
   $direction?: 'right' | 'left';
+  $transform?: string;
 }
 const BackendDashes = styled.div<BackendDashesProps>`
   position: absolute;
   top: 50%;
-  transform: translate(0, -50%);
+  transform: ${({ $transform }) => `translate(0, ${$transform})`};
   height: 0.3rem;
   width: 30%;
   border-radius: 1rem;
@@ -250,24 +251,70 @@ const BackendDashes = styled.div<BackendDashesProps>`
 `;
 
 /* APP */
-const FrontendWrapper = styled.div`
-  position: absolute;
+const BrowserHeader = styled.div`
+  height: 2rem;
   width: 100%;
-  height: 100%;
-  flex: 1;
+  border-bottom: 0.2rem solid #00000022;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0 1rem;
+  background: #0000005c;
+`;
+
+const ResetButton = styled.button`
+  position: absolute;
+  top: 0.4rem;
+  right: 0.6rem;
+  border: none;
+  outline: none;
+  background: none;
+  color: #ececec;
+  font-size: 1.2rem;
+  padding: 0;
+  margin: 0;
+  pointer-events: all;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+`;
+
+const stackCss = css`
+  width: 100%;
+  flex: 0.5;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
 `;
 
+const FrontendWrapper = styled.div`
+  ${stackCss}
+`;
+
 const BackendWrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  ${stackCss}
+`;
+
+const StackContent = styled.div`
+  position: relative;
   flex: 1;
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+`;
 
+interface AppHeaderCircleProps {
+  $color: string;
+}
+const AppHeaderCircle = styled.div<AppHeaderCircleProps>`
+  height: 0.7rem;
+  width: 0.7rem;
+  border-radius: 50%;
+  background: ${({ $color }) => $color};
+`;
+
+const turningWheelsCss = css`
   .backend-cog-wheel-right {
     animation: rotate 3s linear infinite;
   }
@@ -285,62 +332,46 @@ const BackendWrapper = styled.div`
   }
 `;
 
-const BackendSection = styled.div`
-  position: relative;
-  flex: 1;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-`;
-
-const AppHeader = styled.div`
-  flex: 0.2;
-  border-bottom: 0.3rem solid #d3d3d3;
-`;
-
-const AppMain = styled.div`
-  flex: 0.6;
-  display: flex;
-`;
-
-const AppSidebarLeft = styled.div`
-  flex: 0.25;
-  border-right: 0.3rem solid #d3d3d3;
-`;
-
-const AppSidebarRight = styled.div`
-  flex: 0.25;
-  border-left: 0.3rem solid #d3d3d3;
-`;
-
-const AppMainContent = styled.div`
-  flex: 0.5;
-`;
-
-const AppFooter = styled.div`
-  flex: 0.2;
-  border-top: 0.3rem solid #d3d3d3;
+const background = css`
+  background-color: #1835945e;
+  background-size: 4rem 4rem;
+  background-image: linear-gradient(to right, #183594 1px, transparent 1px),
+    linear-gradient(to bottom, #183594 1px, transparent 1px);
+  background-position: -2rem -2rem;
+  border: 0.3rem dashed #183594;
 `;
 
 const appCss = {
   initial: css`
-    border: 0.3rem dashed #183594;
     border-radius: 1rem;
-    background-color: #1835945e;
-    background-size: 4rem 4rem;
-    background-image: linear-gradient(to right, #183594 1px, transparent 1px),
-      linear-gradient(to bottom, #183594 1px, transparent 1px);
-    background-position: -2rem -2rem;
+    ${background}
   `,
   frontend: css`
-    background-color: #9402c08f;
-    border: 0.3rem solid #d3d3d3;
     border-radius: 1rem;
+    ${background}
+    ${FrontendWrapper} {
+      background-color: #7500b9e1;
+    }
   `,
   backend: css`
-    background-color: #7c00008b;
-    border: 0.3rem solid #7c00008b;
     border-radius: 1rem;
+    ${background}
+    ${BackendWrapper} {
+      background-color: #750202e2;
+    }
+  `,
+  fullstack: css`
+    ${background}
+    border-style: solid;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem 0.5rem #183594;
+
+    ${FrontendWrapper} {
+      background-color: #7500b9e1;
+    }
+    ${BackendWrapper} {
+      background-color: #750202e2;
+    }
   `,
 } as const;
 
@@ -348,6 +379,7 @@ interface AppProps {
   $state?: AppStateType;
   $draggingFrontend?: boolean;
   $draggingBackend?: boolean;
+  $droppable?: boolean;
 }
 const App = styled.div<AppProps>`
   position: relative;
@@ -357,26 +389,17 @@ const App = styled.div<AppProps>`
   width: 45vh;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   transform: translate(-50%, -50%);
   backdrop-filter: blur(3px);
   overflow: hidden;
+  transition: box-shadow 0.2s linear;
+  ${turningWheelsCss}
 
   ${({ $state = 'initial' }) => {
     if ($state === 'fullstack') {
-      return css`
-        ${appCss.frontend}
-        box-shadow: 0 0 1rem 0.2rem #b4b4b4;
-
-        .frontend-component {
-          background-color: #008f00c3;
-        }
-
-        ${BackendWrapper} {
-          filter: blur(2px);
-        }
-      `;
+      return appCss.fullstack;
     }
 
     if ($state === 'frontend') {
@@ -390,16 +413,28 @@ const App = styled.div<AppProps>`
     return appCss.initial;
   }};
 
-  ${({ $draggingFrontend = false, $draggingBackend = false }) =>
-    $draggingFrontend
-      ? css`
-          box-shadow: 0 0 1rem 0.5rem #8a00e6ae;
-        `
-      : $draggingBackend
-        ? css`
-            box-shadow: 0 0 1rem 0.5rem #be0202d2;
-          `
-        : null};
+  ${({
+    $draggingFrontend = false,
+    $draggingBackend = false,
+    $droppable = false,
+  }) => {
+    let color: string | null = null;
+
+    if ($droppable) {
+      color = '#008f00c3';
+    } else if ($draggingFrontend) {
+      color = '#8a00e6ae';
+    } else if ($draggingBackend) {
+      color = '#be0202d2';
+    }
+
+    return (
+      color &&
+      css`
+        box-shadow: 0 0 1rem 0.5rem ${color};
+      `
+    );
+  }};
 `;
 
 const DescriptionWrapper = styled.div`
@@ -427,18 +462,23 @@ const expertiseDescCss = css<DescriptionProps>`
   color: #cbcbcb;
   padding: 1rem;
   border-radius: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 
   ${({ $visible }) =>
     $visible
       ? css`
           visibility: visible;
           transform: translateY(0);
-          transition: transform 0.5s linear;
+          transition: transform 0.2s linear;
         `
       : css`
           visibility: hidden;
-          transform: translateY(1rem);
-        `}
+          transform: translateY(0.5rem);
+        `};
 `;
 
 const FrontendDescription = styled.div<DescriptionProps>`
@@ -462,15 +502,16 @@ const initialFullstackState: FullstackState = {
 
 export default function Expertise(): React.ReactNode {
   const containerRef = useRef<HTMLDivElement>(null);
+  const appRef = useRef<HTMLDivElement>(null);
   const frontendRef = useRef<HTMLDivElement>(null);
   const backendRef = useRef<HTMLDivElement>(null);
 
   const [adjective, setAdjective] = useState(adjectives[0]);
   const [appState, setAppState] = useState<AppStateType>('initial');
-  const [dropped, setDropped] = useState<FullstackState>(initialFullstackState);
   const [dragging, setDragging] = useState<FullstackState>(
     initialFullstackState,
   );
+  const [isDroppable, setIsDroppable] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(
@@ -488,45 +529,120 @@ export default function Expertise(): React.ReactNode {
     return () => clearInterval(interval);
   }, []);
 
+  const getDragHandler = useCallback((side: keyof FullstackState) => {
+    return function handler() {
+      setDragging((prev) => ({ ...prev, [side]: true }));
+    };
+  }, []);
+
+  const handleDragFrontend = useMemo(
+    () => getDragHandler('frontend'),
+    [getDragHandler],
+  );
+
+  const handleDragBackend = useMemo(
+    () => getDragHandler('backend'),
+    [getDragHandler],
+  );
+
+  const isWithin = useCallback(
+    (rect: DOMRect, e: MouseEvent, edgeX: 'left' | 'right'): boolean => {
+      if (appRef.current == null) {
+        return false;
+      }
+
+      const offset = 5;
+      const app = appRef.current.getBoundingClientRect();
+
+      const left = app.left - offset;
+      const right = app.right + offset;
+      const top = app.top - offset;
+      const bottom = app.bottom + offset;
+
+      const withinX = rect[edgeX] > left && rect[edgeX] < right;
+      const topWithinY = rect.top > top && rect.top < bottom;
+      const bottomWithinY = rect.bottom > top && rect.bottom < bottom;
+      const withinY = topWithinY || bottomWithinY;
+
+      const clientX = e.clientX > app.left && e.clientX < app.right;
+      const clientY = e.clientY > app.top && e.clientY < app.bottom;
+
+      return withinX && withinY && clientX && clientY;
+    },
+    [],
+  );
+
   useEffect(() => {
     const container = containerRef.current;
     const frontend = frontendRef.current;
     const backend = backendRef.current;
 
-    function handleDragging(side: keyof FullstackState) {
-      return function handle() {
-        setDragging((prev) => ({ ...prev, [side]: true }));
-      };
+    function handleDragging(e: MouseEvent): void {
+      setDragging((prevDragging) => {
+        if (prevDragging.frontend && frontend != null) {
+          const frontendRect = frontend.getBoundingClientRect();
+          if (isWithin(frontendRect, e, 'right')) {
+            setAppState((prevState) =>
+              prevState === 'backend' ? 'fullstack' : 'frontend',
+            );
+          }
+        }
+
+        if (prevDragging.backend && backend != null) {
+          const backendRect = backend.getBoundingClientRect();
+          if (isWithin(backendRect, e, 'left')) {
+            setAppState((prevState) =>
+              prevState === 'frontend' ? 'fullstack' : 'backend',
+            );
+          }
+        }
+
+        return initialFullstackState;
+      });
+
+      setIsDroppable(false);
     }
 
-    const dragFE = handleDragging('frontend');
-    const dragBE = handleDragging('backend');
-    function drop(): void {
-      setDragging(initialFullstackState);
+    function handleDroppable(e: MouseEvent): void {
+      setDragging((prevDragging) => {
+        if (prevDragging.frontend && frontend != null) {
+          const frontendRect = frontend.getBoundingClientRect();
+          setIsDroppable(isWithin(frontendRect, e, 'right'));
+        }
+
+        if (prevDragging.backend && backend != null) {
+          const backendRect = backend.getBoundingClientRect();
+          setIsDroppable(isWithin(backendRect, e, 'left'));
+        }
+
+        return prevDragging;
+      });
     }
 
     if (container != null) {
-      container.addEventListener('mouseup', drop);
+      container.addEventListener('mouseup', handleDragging);
+      container.addEventListener('mousemove', handleDroppable);
     }
     if (frontend != null) {
-      frontend.addEventListener('mousedown', dragFE);
+      frontend.addEventListener('mousedown', handleDragFrontend);
     }
     if (backend != null) {
-      backend.addEventListener('mousedown', dragBE);
+      backend.addEventListener('mousedown', handleDragBackend);
     }
 
     return () => {
       if (container != null) {
-        container.removeEventListener('mouseup', drop);
+        container.removeEventListener('mouseup', handleDragging);
+        container.removeEventListener('mousemove', handleDroppable);
       }
       if (frontend != null) {
-        frontend.removeEventListener('mousedown', dragFE);
+        frontend.removeEventListener('mousedown', handleDragFrontend);
       }
       if (backend != null) {
-        backend.removeEventListener('mousedown', dragBE);
+        backend.removeEventListener('mousedown', handleDragBackend);
       }
     };
-  }, [appState]);
+  }, [appState, handleDragBackend, handleDragFrontend, isWithin]);
 
   const isPainted = useMemo(
     () => appState === 'frontend' || appState === 'fullstack',
@@ -538,8 +654,6 @@ export default function Expertise(): React.ReactNode {
     [appState],
   );
 
-  const testingButtons = true;
-
   return (
     <ExpertiseSection>
       <Title css={{ marginBottom: 0 }}>My Expertise & Passion</Title>
@@ -547,39 +661,6 @@ export default function Expertise(): React.ReactNode {
         Building <AdjectiveSpan key={adjective}>{adjective}</AdjectiveSpan> web
         applications
       </Subtitle>
-
-      {testingButtons && (
-        <div>
-          <button
-            onClick={() => {
-              setAppState('initial');
-            }}
-          >
-            initial
-          </button>
-          <button
-            onClick={() => {
-              setAppState('frontend');
-            }}
-          >
-            frontend
-          </button>
-          <button
-            onClick={() => {
-              setAppState('backend');
-            }}
-          >
-            backend
-          </button>
-          <button
-            onClick={() => {
-              setAppState('fullstack');
-            }}
-          >
-            fullstack
-          </button>
-        </div>
-      )}
 
       <DragContainer ref={containerRef}>
         {appState !== 'frontend' && appState !== 'fullstack' && (
@@ -591,55 +672,57 @@ export default function Expertise(): React.ReactNode {
         )}
 
         <App
+          ref={appRef}
           $state={appState}
           $draggingFrontend={dragging.frontend}
           $draggingBackend={dragging.backend}
+          $droppable={isDroppable}
         >
-          {isFunctional && (
-            <BackendWrapper className="backend-wrapper">
-              <BackendSection>
-                <BackendDashes />
-                <BsDatabaseLock size="4rem" />
+          <BrowserHeader>
+            <AppHeaderCircle $color="red" />
+            <AppHeaderCircle $color="yellow" />
+            <AppHeaderCircle $color="green" />
+
+            {appState === 'fullstack' && (
+              <ResetButton
+                onClick={() => {
+                  setAppState('initial');
+                }}
+              >
+                <MdClose />
+              </ResetButton>
+            )}
+          </BrowserHeader>
+
+          <FrontendWrapper className="backend-wrapper">
+            {isPainted && (
+              <StackContent>
+                <BackendDashes $direction="left" $transform="0.6rem" />
+                <BackendDashes $direction="right" $transform="-0.6rem" />
+                <LuLayoutTemplate size="3.5rem" />
                 <MdOutlineSettings
                   className="backend-cog-wheel-right"
                   size="3rem"
                 />
-                <BsDatabaseLock size="4rem" />
-              </BackendSection>
+                <LuPaintbrush size="3.5rem" />
+              </StackContent>
+            )}
+          </FrontendWrapper>
 
-              <BackendSection>
-                <BackendDashes $direction="left" />
-                <GoShieldLock size="4rem" />
+          <BackendWrapper className="backend-wrapper">
+            {isFunctional && (
+              <StackContent>
+                <BackendDashes $direction="left" $transform="0.6rem" />
+                <BackendDashes $direction="right" $transform="-0.6rem" />
+                <GoShieldLock size="3.5rem" />
                 <MdOutlineSettings
                   className="backend-cog-wheel-left"
                   size="3rem"
                 />
-                <GoShieldLock size="4rem" />
-              </BackendSection>
-
-              <BackendSection>
-                <BackendDashes />
-                <LuServer size="4rem" />
-                <MdOutlineSettings
-                  className="backend-cog-wheel-right"
-                  size="3rem"
-                />
-                <LuServer size="4rem" />
-              </BackendSection>
-            </BackendWrapper>
-          )}
-
-          {isPainted && (
-            <FrontendWrapper className="frontend-wrapper">
-              <AppHeader className="frontend-component" />
-              <AppMain className="frontend-component">
-                <AppSidebarLeft />
-                <AppMainContent />
-                <AppSidebarRight />
-              </AppMain>
-              <AppFooter className="frontend-component" />
-            </FrontendWrapper>
-          )}
+                <BsDatabaseLock size="3.5rem" />
+              </StackContent>
+            )}
+          </BackendWrapper>
         </App>
 
         <BackendBounds>
@@ -668,7 +751,7 @@ export default function Expertise(): React.ReactNode {
         <DescriptionWrapper>
           <FrontendDescription $visible={isPainted}>
             I craft intuitive, visually stunning, and highly responsive frontend
-            interfaces that improves user engagement and experience
+            interfaces that improve user engagement and experience
           </FrontendDescription>
 
           <BackendDescription $visible={isFunctional}>
