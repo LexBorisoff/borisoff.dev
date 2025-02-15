@@ -12,7 +12,7 @@ export const HeroSection = styled.section`
   background-image: linear-gradient(to right, #81818127 1px, transparent 1px),
     linear-gradient(to bottom, #81818127 1px, transparent 1px);
   background-position: -2px -2px;
-  mask-image: linear-gradient(#000000 90%, transparent 100%);
+  mask-image: linear-gradient(#000000 85%, transparent 100%);
 `;
 
 export const SectionMask = styled.div`
@@ -25,7 +25,7 @@ export const SectionMask = styled.div`
   flex: 1;
   background: radial-gradient(40rem 40rem at 10% 0%, #00115e76, transparent),
     radial-gradient(40rem 40rem at 0% 100%, #5e000058, transparent),
-    radial-gradient(40rem 40rem at 100% 0%, #6e003c5a, transparent),
+    radial-gradient(40rem 40rem at 100% 0%, #6e003c70, transparent),
     radial-gradient(40rem 40rem at 90% 100%, #6e54005a, transparent);
 `;
 
