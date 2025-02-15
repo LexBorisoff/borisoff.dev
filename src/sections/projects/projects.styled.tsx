@@ -1,10 +1,6 @@
 import { styled } from 'styled-components';
 
-import Title, { Subtitle } from '../title/title';
-
-import { nodeProjects } from './packages-data';
-
-const ProjectsSection = styled.section`
+export const ProjectsSection = styled.section`
   position: relative;
   width: 100%;
   display: flex;
@@ -15,14 +11,15 @@ const ProjectsSection = styled.section`
   padding-bottom: 2rem;
 `;
 
-const SubtitleSpan = styled.span`
+export const SubtitleSpan = styled.span`
   font: inherit;
   font-weight: 600;
   color: #058a00;
 `;
 
 const maskImage = `linear-gradient(450deg,transparent 0,#000000 5%,#000000 95%,transparent 100%)`;
-const ProjectsContainer = styled.div`
+
+export const ProjectsWrapper = styled.div`
   flex: 1;
   width: 90%;
   max-width: 1200px;
@@ -36,7 +33,7 @@ const ProjectsContainer = styled.div`
   -webkit-mask-image: ${maskImage};
 `;
 
-const ProjectWrapper = styled.div`
+export const ProjectContainer = styled.div`
   flex: 0 0 20rem;
   height: 22rem;
   display: flex;
@@ -62,8 +59,7 @@ const ProjectWrapper = styled.div`
   }
 `;
 
-const gridLineColor = '#81818127';
-const IconWrapper = styled.div`
+export const IconWrapper = styled.div`
   position: relative;
   text-align: center;
   height: 8rem;
@@ -72,12 +68,8 @@ const IconWrapper = styled.div`
   display: grid;
   place-content: center;
   background-size: 1rem 1rem;
-  background-image: linear-gradient(
-      to right,
-      ${gridLineColor} 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, ${gridLineColor} 1px, transparent 1px);
+  background-image: linear-gradient(to right, #81818127 1px, transparent 1px),
+    linear-gradient(to bottom, #81818127 1px, transparent 1px);
   background-position: -2px -2px;
 `;
 
@@ -88,7 +80,8 @@ interface IconWrapperMaskProps {
     y: number;
   };
 }
-const IconWrapperMask = styled.div<IconWrapperMaskProps>`
+
+export const IconWrapperMask = styled.div<IconWrapperMaskProps>`
   position: absolute;
   z-index: 0;
   top: 0;
@@ -101,7 +94,7 @@ const IconWrapperMask = styled.div<IconWrapperMaskProps>`
   visibility: hidden;
 `;
 
-const ProjectInto = styled.div`
+export const ProjectInto = styled.div`
   flex: 1;
   padding: 1rem 2rem;
   display: flex;
@@ -109,7 +102,7 @@ const ProjectInto = styled.div`
   justify-items: start;
 `;
 
-const ProjectTitle = styled.div`
+export const ProjectTitle = styled.div`
   display: flex;
   justify-content: center;
   font-size: 1.7rem;
@@ -121,13 +114,13 @@ const ProjectTitle = styled.div`
   font-family: 'Courier Prime', 'Courier New', Courier, monospace;
 `;
 
-const Description = styled.p`
+export const ProjectDescription = styled.p`
   text-align: center;
   font-size: 1rem;
   color: #c6c6c6;
 `;
 
-const DocsLink = styled.a`
+export const DocsLink = styled.a`
   text-decoration: none;
   color: inherit;
 
@@ -146,44 +139,3 @@ const DocsLink = styled.a`
     transition: background 0.5s;
   }
 `;
-
-export default function Packages(): React.ReactNode {
-  return (
-    <ProjectsSection className="projects-container">
-      <Title css={{ marginBottom: 0, zIndex: 1 }}>Pet Projects</Title>
-      <Subtitle>
-        Check out my <SubtitleSpan>tools</SubtitleSpan> and{' '}
-        <SubtitleSpan>libraries</SubtitleSpan>
-      </Subtitle>
-
-      <ProjectsContainer>
-        {nodeProjects.map(({ name, Icon, description, url }) => (
-          <ProjectWrapper key={name}>
-            <IconWrapper>
-              <IconWrapperMask
-                className="icon-wrapper-mask"
-                color="#035e00a7"
-                coords={{ x: 90, y: 0 }}
-              />
-              <IconWrapperMask
-                className="icon-wrapper-mask"
-                color="#5e00008b"
-                coords={{ x: 0, y: 90 }}
-              />
-              <Icon size="3rem" />
-            </IconWrapper>
-
-            <ProjectInto>
-              <ProjectTitle>{name}</ProjectTitle>
-              <Description>{description}</Description>
-            </ProjectInto>
-
-            <DocsLink href={url} target="_blank" rel="noopener noreferrer">
-              <button className="docs-link-button">Docs</button>
-            </DocsLink>
-          </ProjectWrapper>
-        ))}
-      </ProjectsContainer>
-    </ProjectsSection>
-  );
-}

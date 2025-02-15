@@ -10,43 +10,47 @@ interface ProjectInterface {
   description: string;
 }
 
-export const nodeProjects: ProjectInterface[] = [
+function getUrl(repo: string): string {
+  return `https://github.com/LexBorisoff/${repo}`;
+}
+
+export const projects: ProjectInterface[] = [
   {
     name: 'fs-hooks',
     Icon: TbFishHook,
-    url: 'https://github.com/LexBorisoff/fs-hooks',
+    url: getUrl('fs-hooks'),
     description: 'Library for working with the file system in Node.js',
   },
   {
     name: 'search-web',
     Icon: TbWorldSearch,
-    url: 'https://github.com/LexBorisoff/search-web',
+    url: getUrl('search-web'),
     description: 'Browser web searches from the shell',
   },
   {
     name: 'package-scripts',
     Icon: LuScrollText,
-    url: 'https://github.com/LexBorisoff/package-scripts',
+    url: getUrl('package-scripts'),
     description:
       'Interactively select and run package scripts using any package manager',
   },
   {
     name: 'switch-dir',
     Icon: LuFolderTree,
-    url: 'https://github.com/LexBorisoff/switch-dir',
+    url: getUrl('switch-dir'),
     description: 'Fast and interactive navigation between directories',
   },
   {
     name: 'prompts',
     Icon: TbPrompt,
-    url: 'https://github.com/LexBorisoff/prompts',
+    url: getUrl('prompts'),
     description:
       'Interactive prompts with abstracted methods and improved rendering',
   },
   {
     name: 'eslint-plugin',
     Icon: SiEslint,
-    url: 'https://github.com/LexBorisoff/eslint-plugin',
+    url: getUrl('eslint-plugin'),
     description: 'ESLint plugin with my favourite config rules',
   },
 ];

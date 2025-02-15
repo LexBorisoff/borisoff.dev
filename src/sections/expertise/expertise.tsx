@@ -144,7 +144,7 @@ export default function Expertise(): React.ReactNode {
 
         <DescriptionContainer>
           <FrontendDescription $visible={isPainted}>
-            I craft intuitive, visually stunning, and highly responsive frontend
+            I craft visually stunning, highly responsive, and intuitive frontend
             interfaces that improve user engagement and experience
           </FrontendDescription>
 

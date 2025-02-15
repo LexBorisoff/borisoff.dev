@@ -1,8 +1,6 @@
 import { styled } from 'styled-components';
 
-import Header from '../header/header';
-
-const HeroSection = styled.section`
+export const HeroSection = styled.section`
   position: relative;
   height: 105vh;
   max-height: 50rem;
@@ -17,7 +15,7 @@ const HeroSection = styled.section`
   mask-image: linear-gradient(#000000 90%, transparent 100%);
 `;
 
-const SectionMask = styled.div`
+export const SectionMask = styled.div`
   position: absolute;
   z-index: 0;
   top: 0;
@@ -31,7 +29,7 @@ const SectionMask = styled.div`
     radial-gradient(40rem 40rem at 90% 100%, #6e54005a, transparent);
 `;
 
-const HeroContent = styled.div`
+export const HeroContent = styled.div`
   z-index: 1;
   flex: 1;
   width: 100%;
@@ -42,7 +40,7 @@ const HeroContent = styled.div`
   gap: 3rem;
 `;
 
-const TextWrapper = styled.div`
+export const TextWrapper = styled.div`
   text-align: center;
   max-width: 45rem;
   display: flex;
@@ -67,20 +65,3 @@ const TextWrapper = styled.div`
     -webkit-text-fill-color: transparent;
   }
 `;
-
-export default function Hero(): React.ReactNode {
-  return (
-    <HeroSection className="hero-section">
-      <SectionMask />
-      <Header />
-      <HeroContent className="hero-content">
-        <TextWrapper>
-          <span className="hero-intro-text">{"Hi, I'm Lex 👋"}</span>
-          <span className="hero-main-text">
-            I build practical tools and magical web experiences
-          </span>
-        </TextWrapper>
-      </HeroContent>
-    </HeroSection>
-  );
-}
