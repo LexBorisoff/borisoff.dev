@@ -150,10 +150,10 @@ const DocsLink = styled.a`
 export default function Packages(): React.ReactNode {
   return (
     <ProjectsSection className="projects-container">
-      <Title css={{ marginBottom: 0, zIndex: 1 }}>My Hobby</Title>
+      <Title css={{ marginBottom: 0, zIndex: 1 }}>Pet Projects</Title>
       <Subtitle>
-        Building <SubtitleSpan>tools</SubtitleSpan> and{' '}
-        <SubtitleSpan>libraries</SubtitleSpan> that improve developer experience
+        Check out my <SubtitleSpan>tools</SubtitleSpan> and{' '}
+        <SubtitleSpan>libraries</SubtitleSpan>
       </Subtitle>
 
       <ProjectsContainer>
