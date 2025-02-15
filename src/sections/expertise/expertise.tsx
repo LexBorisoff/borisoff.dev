@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import Draggable from 'react-draggable';
-import { BsDatabaseLock } from 'react-icons/bs';
-import { GoShieldLock } from 'react-icons/go';
-import { LuLayoutTemplate, LuPaintbrush } from 'react-icons/lu';
+import { FiLayout } from 'react-icons/fi';
+import { LuPaintbrush, LuShieldCheck } from 'react-icons/lu';
 import { MdClose, MdOutlineSettings } from 'react-icons/md';
+import { TbDatabase } from 'react-icons/tb';
 
 import Title, { Subtitle } from '../../components/title/title';
 
@@ -96,7 +96,7 @@ export default function Expertise(): React.ReactNode {
               <StackContent>
                 <StackDashes $direction="left" $transform="0.6rem" />
                 <StackDashes $direction="right" $transform="-0.6rem" />
-                <LuLayoutTemplate size="3.5rem" />
+                <FiLayout size="3.5rem" />
                 <MdOutlineSettings className="cog-wheel-right" size="3rem" />
                 <LuPaintbrush size="3.5rem" />
               </StackContent>
@@ -108,9 +108,9 @@ export default function Expertise(): React.ReactNode {
               <StackContent>
                 <StackDashes $direction="left" $transform="0.6rem" />
                 <StackDashes $direction="right" $transform="-0.6rem" />
-                <GoShieldLock size="3.5rem" />
+                <LuShieldCheck size="3.5rem" />
                 <MdOutlineSettings className="cog-wheel-left" size="3rem" />
-                <BsDatabaseLock size="3.5rem" />
+                <TbDatabase size="3.5rem" />
               </StackContent>
             )}
           </BackendWrapper>
