@@ -21,8 +21,6 @@ const exit = keyframes`
   to {
     transform: translateY(-20%);
     opacity: 0;
-    visibility: hidden;
-    display: none;
   }
 `;
 
