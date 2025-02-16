@@ -58,7 +58,7 @@ export const TextWrapper = styled.div`
   .hero-main-text {
     font-size: 4rem;
     font-weight: 500;
-    line-height: 5rem;
+    line-height: 1.25;
     background: linear-gradient(180deg, #bbbbbb 10%, #afafaf 40%, #797979 100%);
     background-clip: text;
     -webkit-background-clip: text;
