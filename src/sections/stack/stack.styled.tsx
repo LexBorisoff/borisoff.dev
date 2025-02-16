@@ -26,6 +26,7 @@ export const StackSection = styled.section`
 
 interface SliderProps {
   $startAnimation: boolean;
+  $pauseAnimation: boolean;
 }
 
 export const Slider = styled.div<SliderProps>`
@@ -36,6 +37,13 @@ export const Slider = styled.div<SliderProps>`
     $startAnimation
       ? css`
           animation: ${slide} 45s linear infinite;
+        `
+      : null}
+
+  ${({ $pauseAnimation }) =>
+    $pauseAnimation
+      ? css`
+          animation-play-state: paused;
         `
       : null}
 `;
