@@ -1,4 +1,4 @@
-import { useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import Title from '../../components/title/title';
 
@@ -8,12 +8,14 @@ import { Logo, Slider, SliderWrapper, StackSection } from './stack.styled';
 export default function Stack(): React.ReactNode {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [startAnimation, setStartAnimation] = useState(false);
+  const [pauseAnimation, setPauseAnimation] = useState(false);
 
-  // starts animation only when stack section is in view
-  useLayoutEffect(() => {
+  // plays animation only when stack section is in view
+  useEffect(() => {
     const ref = sliderRef.current;
     const observer = new IntersectionObserver(([entry]) => {
       setStartAnimation((prev) => prev || entry.isIntersecting);
+      setPauseAnimation(!entry.isIntersecting);
     });
 
     if (ref != null) {
@@ -38,8 +40,12 @@ export default function Stack(): React.ReactNode {
   );
 
   const slider = useMemo(
-    () => <Slider $startAnimation={startAnimation}>{logos}</Slider>,
-    [logos, startAnimation],
+    () => (
+      <Slider $startAnimation={startAnimation} $pauseAnimation={pauseAnimation}>
+        {logos}
+      </Slider>
+    ),
+    [logos, startAnimation, pauseAnimation],
   );
 
   return (
