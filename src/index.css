@@ -12,6 +12,8 @@ body {
 html {
   scrollbar-width: thin;
   scrollbar-color: #383838 #252525;
+  min-width: 340px;
+  min-height: 700px;
 }
 
 body {
