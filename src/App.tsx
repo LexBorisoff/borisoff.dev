@@ -3,10 +3,10 @@ import { styled } from 'styled-components';
 
 // import Contact from './components/contact/contact';
 import Banner from './components/banner/banner';
-import Expertise from './sections/expertise/expertise';
-import Hero from './sections/hero/hero';
-import Projects from './sections/projects/projects';
-import Stack from './sections/stack/stack';
+import Expertise from './layout/expertise/expertise';
+import Hero from './layout/hero/hero';
+import Projects from './layout/projects/projects';
+import Stack from './layout/stack/stack';
 
 const UNDER_CONSTRUCTION = import.meta.env.VITE_UNDER_CONSTRUCTION === 'true';
 
