@@ -3,16 +3,13 @@ import { css, styled } from 'styled-components';
 export const DescriptionContainer = styled.div`
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   height: 100%;
   width: 100%;
-  max-width: 1250px;
   pointer-events: none;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
   justify-items: center;
+  align-items: center;
 `;
 
 interface DescriptionProps {

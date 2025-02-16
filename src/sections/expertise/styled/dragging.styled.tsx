@@ -85,12 +85,25 @@ const spanCss = css`
   border-radius: 1rem;
 `;
 
+function draggingCss(
+  bgColor: string,
+  lineColor: string,
+): ReturnType<typeof css> {
+  return css`
+    background-size: 2rem 2rem;
+    background-position: -1rem -1rem;
+    background-color: ${bgColor};
+    background-image: linear-gradient(
+        to right,
+        ${lineColor} 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, ${lineColor} 1px, transparent 1px);
+  `;
+}
+
 const draggingFrontendCss = css`
-  background-color: #8a00e65a;
-  background-size: 2rem 2rem;
-  background-image: linear-gradient(to right, #8a00e642 1px, transparent 1px),
-    linear-gradient(to bottom, #8a00e642 1px, transparent 1px);
-  background-position: -1rem -1rem;
+  ${draggingCss('#8a00e65a', '#8a00e642')}
 
   span {
     ${spanCss}
@@ -99,11 +112,7 @@ const draggingFrontendCss = css`
 `;
 
 const draggingBackendCss = css`
-  background-color: #99000060;
-  background-size: 2rem 2rem;
-  background-image: linear-gradient(to right, #be02022b 1px, transparent 1px),
-    linear-gradient(to bottom, #be02022b 1px, transparent 1px);
-  background-position: -1rem -1rem;
+  ${draggingCss('#99000060', '#be02022b')}
 
   span {
     ${spanCss}

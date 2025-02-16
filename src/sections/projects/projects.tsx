@@ -19,8 +19,8 @@ export default function Projects(): React.ReactNode {
     <ProjectsSection>
       <Title css={{ marginBottom: 0, zIndex: 1 }}>Pet Projects</Title>
       <Subtitle>
-        Check out my DX <SubtitleSpan>tools</SubtitleSpan> and{' '}
-        <SubtitleSpan>libraries</SubtitleSpan>
+        Check out my <SubtitleSpan>libraries</SubtitleSpan> and DX{' '}
+        <SubtitleSpan>tools</SubtitleSpan>
       </Subtitle>
 
       <ProjectsWrapper>

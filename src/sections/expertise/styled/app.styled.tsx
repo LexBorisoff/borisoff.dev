@@ -41,19 +41,19 @@ export const TopbarCircle = styled.div<TopbarCircleProps>`
   background: ${({ $color }) => $color};
 `;
 
+export const DroppableText = styled.div`
+  flex: 1 100%;
+  display: grid;
+  place-content: center;
+  font-size: 1.2rem;
+`;
+
 const stackCss = css`
   width: 100%;
   flex: 0.5;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-`;
-
-export const DroppableText = styled.div`
-  flex: 1 100%;
-  display: grid;
-  place-content: center;
-  font-size: 1.2rem;
 `;
 
 export const FrontendWrapper = styled.div`
