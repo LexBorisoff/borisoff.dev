@@ -19,32 +19,34 @@ export const HeaderContainer = styled.div`
   flex: 1;
   margin: 0 5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 1rem;
 
-  ${media.md} {
-    flex-flow: column nowrap;
-    align-items: flex-end;
-    gap: 0.5rem;
-    margin: 1rem 2rem 0;
+  ${media.lg} {
+    gap: 0.75rem;
   }
 
-  ${media.sm} {
-    flex-flow: column nowrap;
-    align-items: flex-end;
+  ${media.xs} {
     gap: 0.5rem;
-    margin: 1rem 1.3rem 0;
   }
 `;
 
 export const LinkWrapper = styled.a`
-  flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
   color: inherit;
   text-decoration: none;
+
+  ${media.md} {
+    gap: 0.7rem;
+  }
+
+  ${media.sm} {
+    gap: 0.5rem;
+  }
 
   &:hover {
     .header-icon-wrapper {
@@ -65,10 +67,6 @@ export const LinkWrapper = styled.a`
     ${media.md} {
       font-size: 1rem;
     }
-  }
-
-  ${media.md} {
-    flex-flow: row-reverse nowrap;
   }
 `;
 

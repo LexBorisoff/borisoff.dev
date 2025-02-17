@@ -16,6 +16,14 @@ export const HeroSection = styled.section`
     linear-gradient(to bottom, #81818127 1px, transparent 1px);
   background-position: -2px -2px;
   mask-image: linear-gradient(#000000 85%, transparent 100%);
+
+  ${media.md} {
+    max-height: 500px;
+  }
+
+  ${media.sm} {
+    max-height: 300px;
+  }
 `;
 
 function sectionMaskBackground(x: number, y: number): ReturnType<typeof css> {
@@ -63,10 +71,10 @@ export const HeroContent = styled.div`
   flex: 1;
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 `;
 
 export const TextWrapper = styled.div`
@@ -74,14 +82,15 @@ export const TextWrapper = styled.div`
   max-width: 55rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
 
   ${media.lg} {
-    max-width: 45rem;
+    max-width: 55rem;
   }
 
   ${media.md} {
-    max-width: 40rem;
+    max-width: 45rem;
   }
 
   ${media.sm} {
@@ -92,58 +101,124 @@ export const TextWrapper = styled.div`
     max-width: 25rem;
     gap: 0.7rem;
   }
+`;
 
-  .hero-intro-text {
-    font-size: 2rem;
-    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
-    font-weight: 500;
-    font-style: italic;
-    color: #b8b8b8;
+export const HeroIntroText = styled.div`
+  color: #dcdcdc;
+  padding: 0.15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem;
+  background: linear-gradient(
+    45deg,
+    #02fcef70 0,
+    #ffb52b70 50%,
+    #a02bfe70 100%
+  );
 
-    ${media.lg} {
-      font-size: 1.9rem;
-    }
-
-    ${media.md} {
-      font-size: 1.7rem;
-    }
-
-    ${media.sm} {
-      font-size: 1.5rem;
-    }
-
-    ${media.xs} {
-      font-size: 1.3rem;
-    }
+  ${media.md} {
+    padding: 0.1rem;
   }
 
-  .hero-main-text {
-    font-size: 4rem;
-    padding: 0 4rem;
-    font-weight: 500;
-    line-height: 1.25;
-    background: linear-gradient(180deg, #bbbbbb 10%, #afafaf 40%, #797979 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  span {
+    font-size: 2rem;
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    display: grid;
+    place-content: center;
+    background-color: #000000d9;
+    border-radius: 2rem;
+    padding: 0 2rem;
 
     ${media.lg} {
-      padding: 0 3rem;
-      font-size: 3.4rem;
+      font-size: 1.8rem;
     }
 
     ${media.md} {
-      padding: 0 5rem;
-      font-size: 2.7rem;
+      font-size: 1.6rem;
     }
 
     ${media.sm} {
-      padding: 0 2rem;
-      font-size: 2.3rem;
+      font-size: 1.4rem;
     }
 
     ${media.xs} {
-      font-size: 2rem;
+      font-size: 1.2rem;
+    }
+  }
+`;
+
+export const HeroMainText = styled.span`
+  font-size: 4.4rem;
+  padding: 0 4rem;
+  font-weight: 600;
+  line-height: 1.25;
+  background: linear-gradient(135deg, #ebebeb 30%, #6c75b5 70%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  ${media.lg} {
+    padding: 0 3rem;
+    font-size: 4rem;
+  }
+
+  ${media.md} {
+    padding: 0 5rem;
+    font-size: 3.7rem;
+  }
+
+  ${media.sm} {
+    padding: 0 2rem;
+    font-size: 3.3rem;
+  }
+
+  ${media.xs} {
+    font-size: 3rem;
+  }
+`;
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  gap: 1.5rem;
+`;
+
+const linkCss = css`
+  text-decoration: none;
+`;
+
+const buttonCss = css`
+  border: none;
+  outline: none;
+  padding: 0.8rem 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .hero-link-icon {
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+`;
+
+export const GithubButton = styled.a`
+  ${linkCss}
+
+  button {
+    ${buttonCss}
+    background: linear-gradient(45deg, #d81d1d 10%, #8c109a 50%, #172696 90%);
+    color: #ffffff;
+    transition: box-shadow 0.2s linear;
+
+    &:hover {
+      box-shadow: 0 0 0.4rem 0.1rem #ffffff;
     }
   }
 `;
