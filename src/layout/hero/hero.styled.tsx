@@ -5,7 +5,7 @@ import { media } from '../../theme/media';
 export const HeroSection = styled.section`
   position: relative;
   height: 105vh;
-  min-height: 400px;
+  min-height: 550px;
   max-height: 50rem;
   display: flex;
   flex-direction: column;

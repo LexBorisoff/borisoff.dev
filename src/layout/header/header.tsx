@@ -1,24 +1,27 @@
+import { IconType } from 'react-icons';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { MdOutlineEmail } from 'react-icons/md';
 
 import {
-  EmailWrapper,
+  LinkWrapper,
   IconWrapper,
-  LinkStyled,
-  LinksWrapper,
   HeaderContainer,
   HeaderSection,
 } from './header.styled';
 
 interface LinkProps {
-  children: React.ReactElement;
+  Icon: IconType;
   href: string;
+  text?: string;
 }
-function Link({ children, href }: LinkProps): React.ReactNode {
+function Link({ Icon, href, text }: LinkProps): React.ReactNode {
   return (
-    <LinkStyled href={href} target="_blank" rel="noopener noreferrer">
-      {children}
-    </LinkStyled>
+    <LinkWrapper href={href} target="_blank" rel="noopener noreferrer">
+      <IconWrapper className="header-icon-wrapper">
+        {<Icon className="header-icon" />}
+      </IconWrapper>
+      {text != null && <span>{text}</span>}
+    </LinkWrapper>
   );
 }
 
@@ -26,22 +29,24 @@ export default function Header(): React.ReactNode {
   return (
     <HeaderSection>
       <HeaderContainer>
-        <EmailWrapper>
-          <IconWrapper>
-            <MdOutlineEmail size="1.2rem" />
+        <LinkWrapper>
+          <IconWrapper className="header-icon-wrapper">
+            <MdOutlineEmail className="header-icon" />
           </IconWrapper>
           <span>lex@borisoff.dev</span>
-        </EmailWrapper>
+        </LinkWrapper>
 
-        <LinksWrapper>
-          <Link href="https://github.com/lexborisoff">
-            <FaGithub size="1.2rem" />
-          </Link>
+        <Link
+          href="https://linkedin.com/in/lexborisoff/"
+          Icon={FaLinkedinIn}
+          text="LinkedIn"
+        />
 
-          <Link href="https://linkedin.com/in/lexborisoff">
-            <FaLinkedinIn size="1.2rem" />
-          </Link>
-        </LinksWrapper>
+        <Link
+          href="https://github.com/lexborisoff"
+          Icon={FaGithub}
+          text="GitHub"
+        />
       </HeaderContainer>
     </HeaderSection>
   );

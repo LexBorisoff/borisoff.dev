@@ -1,4 +1,6 @@
-import { styled, css } from 'styled-components';
+import { styled } from 'styled-components';
+
+import { media } from '../../theme/media';
 
 export const HeaderSection = styled.header`
   position: absolute;
@@ -19,30 +21,58 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  ${media.md} {
+    flex-flow: column nowrap;
+    align-items: flex-end;
+    gap: 0.5rem;
+    margin: 1rem 2rem 0;
+  }
+
+  ${media.sm} {
+    flex-flow: column nowrap;
+    align-items: flex-end;
+    gap: 0.5rem;
+    margin: 1rem 1.3rem 0;
+  }
 `;
 
-export const EmailWrapper = styled.div`
+export const LinkWrapper = styled.a`
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    .header-icon-wrapper {
+      background: #0c2576ab;
+      border: 1px solid #475994ab;
+    }
+  }
 
   span {
     font-size: 1.3rem;
     font-family: 'Courier Prime', 'Courier New', Courier, monospace;
     color: #d9d9d9;
+
+    ${media.lg} {
+      font-size: 1.1rem;
+    }
+
+    ${media.md} {
+      font-size: 1rem;
+    }
+  }
+
+  ${media.md} {
+    flex-flow: row-reverse nowrap;
   }
 `;
 
-export const LinksWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  gap: 1rem;
-`;
-
-const iconCss = css`
+export const IconWrapper = styled.div`
   background: #2727277a;
   border: 1px solid #3a3a3a;
   border-radius: 50%;
@@ -52,30 +82,28 @@ const iconCss = css`
   place-content: center;
   transition: background 0.2s;
 
-  &:hover {
-    background: #0c2576ab;
-    border: 1px solid #475994ab;
+  .header-icon {
+    height: 1.2rem;
+    width: 1.2rem;
   }
-`;
 
-interface IconWrapperProps {
-  clickable?: boolean;
-}
+  ${media.md} {
+    height: 2.2rem;
+    width: 2.2rem;
 
-export const IconWrapper = styled.div<IconWrapperProps>`
-  ${iconCss}
+    .header-icon {
+      height: 1rem;
+      width: 1rem;
+    }
+  }
 
-  ${({ clickable }) =>
-    clickable &&
-    css`
-      &:hover {
-        cursor: pointer;
-      }
-    `}
-`;
+  ${media.sm} {
+    height: 2rem;
+    width: 2rem;
 
-export const LinkStyled = styled.a`
-  color: inherit;
-  text-decoration: none;
-  ${iconCss}
+    .header-icon {
+      height: 1rem;
+      width: 1rem;
+    }
+  }
 `;

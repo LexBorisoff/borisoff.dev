@@ -1,35 +1,35 @@
 type Media = {
   /**
-   * 480
+   * 1440
    */
-  xs: string;
-  /**
-   * 620
-   */
-  sm: string;
-  /**
-   * 990
-   */
-  md: string;
+  xl: string;
   /**
    * 1280
    */
   lg: string;
   /**
-   * 1440
+   * 990
    */
-  xl: string;
+  md: string;
+  /**
+   * 620
+   */
+  sm: string;
+  /**
+   * 480
+   */
+  xs: string;
 };
 
 export type Breakpoint = keyof Media;
 
 // desktop-first, i.e. breakpoints are max-width
 export const breakpoints = {
-  xs: 480,
-  sm: 620,
-  md: 990,
-  lg: 1280,
   xl: 1440,
+  lg: 1280,
+  md: 990,
+  sm: 620,
+  xs: 480,
 } as const satisfies Record<Breakpoint, number>;
 
 export const media = Object.entries(breakpoints).reduce<Media>(
