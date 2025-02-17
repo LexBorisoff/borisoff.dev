@@ -126,26 +126,26 @@ export const HeroIntroText = styled.div`
     padding: 0.3rem 2rem;
 
     ${media.lg} {
-      font-size: 1.4rem;
+      font-size: 1.45rem;
     }
 
     ${media.md} {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
 
     ${media.sm} {
-      font-size: 1rem;
+      font-size: 1.15rem;
     }
 
     ${media.xs} {
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
   }
 `;
 
 export const HeroMainText = styled.span`
   font-size: 4.4rem;
-  padding: 0 4rem;
+  padding: 0 1rem;
   font-weight: 600;
   line-height: 1.25;
   background: linear-gradient(135deg, #ebebeb 30%, #6c75b5 80%);
@@ -154,17 +154,14 @@ export const HeroMainText = styled.span`
   -webkit-text-fill-color: transparent;
 
   ${media.lg} {
-    padding: 0 3rem;
     font-size: 4rem;
   }
 
   ${media.md} {
-    padding: 0 5rem;
     font-size: 3.7rem;
   }
 
   ${media.sm} {
-    padding: 0 2rem;
     font-size: 3.3rem;
   }
 
