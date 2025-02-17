@@ -21,7 +21,7 @@ export default function Hero(): React.ReactNode {
       <HeroContent>
         <TextWrapper>
           <HeroIntroText>
-            <span>{"Hi, I'm Lex 👋"}</span>
+            <span>{"Hi, I'm Lex"}</span>
           </HeroIntroText>
           <HeroMainText>Fullstack Software Developer</HeroMainText>
         </TextWrapper>

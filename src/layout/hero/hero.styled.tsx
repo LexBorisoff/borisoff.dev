@@ -105,7 +105,7 @@ export const TextWrapper = styled.div`
 
 export const HeroIntroText = styled.div`
   color: #dcdcdc;
-  padding: 0.15rem;
+  padding: 0.1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,33 +117,28 @@ export const HeroIntroText = styled.div`
     #a02bfe70 100%
   );
 
-  ${media.md} {
-    padding: 0.1rem;
-  }
-
   span {
-    font-size: 2rem;
-    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    font-size: 1.6rem;
     display: grid;
     place-content: center;
     background-color: #000000d9;
     border-radius: 2rem;
-    padding: 0 2rem;
+    padding: 0.3rem 2rem;
 
     ${media.lg} {
-      font-size: 1.8rem;
-    }
-
-    ${media.md} {
-      font-size: 1.6rem;
-    }
-
-    ${media.sm} {
       font-size: 1.4rem;
     }
 
-    ${media.xs} {
+    ${media.md} {
       font-size: 1.2rem;
+    }
+
+    ${media.sm} {
+      font-size: 1rem;
+    }
+
+    ${media.xs} {
+      font-size: 0.8rem;
     }
   }
 `;
@@ -153,7 +148,7 @@ export const HeroMainText = styled.span`
   padding: 0 4rem;
   font-weight: 600;
   line-height: 1.25;
-  background: linear-gradient(135deg, #ebebeb 30%, #6c75b5 70%);
+  background: linear-gradient(135deg, #ebebeb 30%, #6c75b5 80%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -219,6 +214,12 @@ export const GithubButton = styled.a`
 
     &:hover {
       box-shadow: 0 0 0.4rem 0.1rem #ffffff;
+      background: linear-gradient(
+        135deg,
+        #d81d1d 10%,
+        #8c109a 50%,
+        #172696 90%
+      );
     }
   }
 `;
