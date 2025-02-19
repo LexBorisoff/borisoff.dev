@@ -1,29 +1,41 @@
 import { FaGithub } from 'react-icons/fa';
+import { PiStackBold } from 'react-icons/pi';
 
+import { Subtitle } from '../../components/title/title';
+import { useNextAdjective } from '../../hooks/use-next-adjective';
 import Header from '../header/header';
 
+import { AdjectiveSpan } from './styled/adjective.styled';
 import {
   ButtonsWrapper,
   GithubButton,
   HeroContent,
-  HeroIntroText,
-  HeroMainText,
-  HeroSection,
-  SectionMask,
+  HeroTitleText,
+  HeroNameText,
   TextWrapper,
-} from './hero.styled';
+} from './styled/content.styled';
+import { HeroSection, SectionMask } from './styled/section.styled';
 
 export default function Hero(): React.ReactNode {
+  const adjective = useNextAdjective();
+
   return (
     <HeroSection>
       <SectionMask />
       <Header />
       <HeroContent>
         <TextWrapper>
-          <HeroIntroText>
-            <span>{"Hi, I'm Lex"}</span>
-          </HeroIntroText>
-          <HeroMainText>Fullstack Software Developer</HeroMainText>
+          <HeroTitleText>
+            <span>
+              Full-Stack Developer
+              <PiStackBold className="full-stack-hero-icon" />
+            </span>
+          </HeroTitleText>
+          <HeroNameText>{'Lex Borisoff'}</HeroNameText>
+          <Subtitle>
+            I build <AdjectiveSpan key={adjective}>{adjective}</AdjectiveSpan>{' '}
+            web applications
+          </Subtitle>
         </TextWrapper>
 
         <ButtonsWrapper>

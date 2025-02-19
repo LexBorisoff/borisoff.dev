@@ -1,70 +1,6 @@
 import { css, styled } from 'styled-components';
 
-import { media } from '../../theme/media';
-
-export const HeroSection = styled.section`
-  position: relative;
-  height: 105vh;
-  min-height: 550px;
-  max-height: 50rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background-color: #0f0f0f;
-  background-size: 3rem 3rem;
-  background-image: linear-gradient(to right, #81818127 1px, transparent 1px),
-    linear-gradient(to bottom, #81818127 1px, transparent 1px);
-  background-position: -2px -2px;
-  mask-image: linear-gradient(#000000 85%, transparent 100%);
-
-  ${media.md} {
-    max-height: 500px;
-  }
-
-  ${media.sm} {
-    max-height: 300px;
-  }
-`;
-
-function sectionMaskBackground(x: number, y: number): ReturnType<typeof css> {
-  return css`
-    background: radial-gradient(
-        ${x}rem ${y}rem at 10% 0%,
-        #00115e76,
-        transparent
-      ),
-      radial-gradient(${x}rem ${y}rem at 0% 100%, #5e000058, transparent),
-      radial-gradient(${x}rem ${y}rem at 100% 0%, #6e003c70, transparent),
-      radial-gradient(${x}rem ${y}rem at 90% 100%, #6e54005a, transparent);
-  `;
-}
-
-export const SectionMask = styled.div`
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  flex: 1;
-  ${sectionMaskBackground(40, 40)}
-
-  ${media.lg} {
-    ${sectionMaskBackground(30, 30)}
-  }
-
-  ${media.md} {
-    ${sectionMaskBackground(25, 25)}
-  }
-
-  ${media.sm} {
-    ${sectionMaskBackground(20, 25)}
-  }
-
-  ${media.xs} {
-    ${sectionMaskBackground(15, 20)}
-  }
-`;
+import { media } from '../../../theme/media';
 
 export const HeroContent = styled.div`
   z-index: 1;
@@ -75,6 +11,7 @@ export const HeroContent = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  cursor: default;
 `;
 
 export const TextWrapper = styled.div`
@@ -103,9 +40,9 @@ export const TextWrapper = styled.div`
   }
 `;
 
-export const HeroIntroText = styled.div`
+export const HeroTitleText = styled.div`
   color: #dcdcdc;
-  padding: 0.1rem;
+  padding: 0.15rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,24 +54,38 @@ export const HeroIntroText = styled.div`
     #a02bfe70 100%
   );
 
+  &:hover {
+    span {
+      background-color: #0000008f;
+    }
+  }
+
   span {
-    font-size: 1.6rem;
-    display: grid;
+    font-size: 1.4rem;
+    display: flex;
     place-content: center;
+    align-items: center;
+    gap: 0.5rem;
     background-color: #000000d9;
     border-radius: 2rem;
-    padding: 0.3rem 2rem;
+    padding: 0.3rem 1rem;
+    transition: background 0.2s;
 
-    ${media.lg} {
-      font-size: 1.45rem;
+    .full-stack-hero-icon {
+      height: 1.5rem;
+      width: 1.5rem;
     }
 
-    ${media.md} {
+    ${media.lg} {
       font-size: 1.3rem;
     }
 
+    ${media.md} {
+      font-size: 1.2rem;
+    }
+
     ${media.sm} {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
     }
 
     ${media.xs} {
@@ -143,8 +94,8 @@ export const HeroIntroText = styled.div`
   }
 `;
 
-export const HeroMainText = styled.span`
-  font-size: 4.4rem;
+export const HeroNameText = styled.span`
+  font-size: 6rem;
   padding: 0 1rem;
   font-weight: 600;
   line-height: 1.25;
@@ -154,15 +105,15 @@ export const HeroMainText = styled.span`
   -webkit-text-fill-color: transparent;
 
   ${media.lg} {
-    font-size: 4rem;
+    font-size: 5.5rem;
   }
 
   ${media.md} {
-    font-size: 3.7rem;
+    font-size: 5rem;
   }
 
   ${media.sm} {
-    font-size: 3.3rem;
+    font-size: 4rem;
   }
 
   ${media.xs} {
@@ -207,7 +158,7 @@ export const GithubButton = styled.a`
     ${buttonCss}
     background: linear-gradient(45deg, #d81d1d 10%, #8c109a 50%, #172696 90%);
     color: #ffffff;
-    transition: box-shadow 0.2s linear;
+    transition: box-shadow 0.1s linear;
 
     &:hover {
       box-shadow: 0 0 0.4rem 0.1rem #ffffff;
