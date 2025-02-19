@@ -11,7 +11,6 @@ export const ADJECTIVES = [
   'data-driven',
   'user-centric',
   'feature-rich',
-  'sophisticated',
 ];
 
 export const ADJECTIVE_ANIMATION = {

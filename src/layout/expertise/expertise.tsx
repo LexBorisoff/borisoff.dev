@@ -5,11 +5,9 @@ import { LuPaintbrush, LuShieldCheck } from 'react-icons/lu';
 import { MdClose, MdOutlineSettings } from 'react-icons/md';
 import { TbDatabase } from 'react-icons/tb';
 
-import Title, { Subtitle } from '../../components/title/title';
+import Title from '../../components/title/title';
+import { useDrag } from '../../hooks/use-drag';
 
-import { useDrag } from './hooks/use-drag';
-import { useNextAdjective } from './hooks/use-next-adjective';
-import { AdjectiveSpan } from './styled/adjective.styled';
 import {
   TopbarCircle,
   Topbar,
@@ -37,7 +35,6 @@ import {
 import { ExpertiseSection } from './styled/section.styled';
 
 export default function Expertise(): React.ReactNode {
-  const adjective = useNextAdjective();
   const { appState, isDragging, isDroppable, refs, reset } = useDrag();
 
   const isPainted = useMemo(
@@ -52,12 +49,7 @@ export default function Expertise(): React.ReactNode {
 
   return (
     <ExpertiseSection>
-      <Title css={{ marginBottom: 0 }}>My Expertise & Passion</Title>
-
-      <Subtitle>
-        Building <AdjectiveSpan key={adjective}>{adjective}</AdjectiveSpan> web
-        applications
-      </Subtitle>
+      <Title>My Expertise & Passion</Title>
 
       <DragContainer ref={refs.container}>
         {appState !== 'frontend' && appState !== 'fullstack' && (

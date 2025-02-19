@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { ADJECTIVE_ANIMATION, ADJECTIVES } from '../constants';
+import { ADJECTIVE_ANIMATION, ADJECTIVES } from '../layout/expertise/constants';
 
 export function useNextAdjective(): string {
   const [adjective, setAdjective] = useState(ADJECTIVES[0]);

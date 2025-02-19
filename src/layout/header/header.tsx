@@ -1,5 +1,5 @@
-import { FaLinkedinIn } from 'react-icons/fa';
-import { MdOutlineEmail } from 'react-icons/md';
+import { FaLinkedin } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
 
 import {
   LinkWrapper,
@@ -18,13 +18,13 @@ export default function Header(): React.ReactNode {
           rel="noopener noreferrer"
         >
           <IconWrapper className="header-icon-wrapper">
-            {<FaLinkedinIn className="header-icon" />}
+            {<FaLinkedin className="header-icon" />}
           </IconWrapper>
         </LinkWrapper>
 
         <LinkWrapper>
           <IconWrapper className="header-icon-wrapper">
-            <MdOutlineEmail className="header-icon" />
+            <MdEmail className="header-icon" />
           </IconWrapper>
           <span>lex@borisoff.dev</span>
         </LinkWrapper>
