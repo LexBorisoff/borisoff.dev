@@ -27,11 +27,13 @@ export default function Hero(): React.ReactNode {
         <TextWrapper>
           <HeroTitleText>
             <span>
-              Full-Stack Developer
-              <PiStackBold className="full-stack-hero-icon" />
+              Full-Stack <PiStackBold className="full-stack-hero-icon" />{' '}
+              Developer
             </span>
           </HeroTitleText>
+
           <HeroNameText>{'Lex Borisoff'}</HeroNameText>
+
           <Subtitle>
             I build <AdjectiveSpan key={adjective}>{adjective}</AdjectiveSpan>{' '}
             web applications

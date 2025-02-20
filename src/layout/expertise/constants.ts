@@ -9,6 +9,7 @@ export const ADJECTIVES = [
   'intuitive',
   'responsive',
   'data-driven',
+  'interactive',
   'user-centric',
   'feature-rich',
 ];

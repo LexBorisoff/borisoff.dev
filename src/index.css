@@ -19,9 +19,6 @@ html {
 body {
   font-family: Poppins, sans-serif;
   background-color: #0f0f0f;
-  background-image: radial-gradient(#3f3f3f 1px, transparent 0);
-  background-size: 3rem 3rem;
-  background-position: calc(-1.5rem - 2px) calc(-1.5rem - 2px);
 }
 
 html,

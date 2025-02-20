@@ -18,7 +18,7 @@ export const TextWrapper = styled.div`
   text-align: center;
   max-width: 55rem;
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
   align-items: center;
   gap: 1rem;
 

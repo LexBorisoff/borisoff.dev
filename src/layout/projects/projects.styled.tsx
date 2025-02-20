@@ -9,6 +9,8 @@ export const ProjectsSection = styled.section`
   align-items: center;
   overflow: hidden;
   padding-bottom: 2rem;
+  background-image: radial-gradient(#3f3f3f 1px, transparent 0);
+  background-size: 3rem 3rem;
 `;
 
 export const SubtitleSpan = styled.span`
