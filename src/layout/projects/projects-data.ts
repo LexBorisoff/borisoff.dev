@@ -47,10 +47,4 @@ export const projects: ProjectInterface[] = [
     description:
       'Interactive prompts with abstracted methods and improved rendering',
   },
-  {
-    name: 'eslint-plugin',
-    Icon: SiEslint,
-    url: getUrl('eslint-plugin'),
-    description: 'ESLint plugin with my favourite config rules',
-  },
 ];
