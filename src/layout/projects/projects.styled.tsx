@@ -7,6 +7,7 @@ export const ProjectsSection = styled.section`
   flex-direction: column;
   justify-content: start;
   align-items: center;
+  gap: 1rem;
   overflow: hidden;
   padding-bottom: 2rem;
   background-image: radial-gradient(#3f3f3f 1px, transparent 0);
@@ -19,30 +20,27 @@ export const SubtitleSpan = styled.span`
   color: #058a00;
 `;
 
-const maskImage = `linear-gradient(450deg,transparent 0,#000000 5%,#000000 95%,transparent 100%)`;
-
 export const ProjectsWrapper = styled.div`
   flex: 1;
   width: 90%;
   max-width: 1200px;
-  padding: 0.5rem 3rem 2rem;
+  padding: 0.5rem 1rem 2rem;
   display: flex;
-  justify-content: start;
+  flex-flow: row wrap;
+  justify-content: center;
   align-items: start;
   gap: 2rem;
-  overflow: auto;
-  mask-image: ${maskImage};
-  -webkit-mask-image: ${maskImage};
 `;
 
 export const ProjectContainer = styled.div`
-  flex: 0 0 20rem;
+  flex: 1 2 17rem;
+  max-width: 22rem;
   height: 22rem;
   display: flex;
   flex-direction: column;
   justify-content: start;
   border: 1px solid #242424;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   background: #0f0f0f;
   overflow: hidden;
   transition: box-shadow 0.2s;

@@ -37,6 +37,7 @@ interface TitleStyledProps {
 const TitleStyled = styled.h2<TitleStyledProps>`
   font-weight: 600;
   color: #cbcbcb;
+  text-align: center;
 `;
 
 interface TitleProps {

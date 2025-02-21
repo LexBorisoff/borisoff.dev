@@ -17,9 +17,9 @@ import {
 export default function Projects(): React.ReactNode {
   return (
     <ProjectsSection>
-      <Title css={{ marginBottom: 0, zIndex: 1 }}>Pet Projects</Title>
+      <Title css={{ marginBottom: 0 }}>Dev Projects</Title>
       <Subtitle>
-        Check out my <SubtitleSpan>libraries</SubtitleSpan> and DX{' '}
+        Check out my <SubtitleSpan>libraries</SubtitleSpan> and{' '}
         <SubtitleSpan>tools</SubtitleSpan>
       </Subtitle>
 
