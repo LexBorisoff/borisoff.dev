@@ -46,7 +46,7 @@ export const ProjectContainer = styled.div`
   transition: box-shadow 0.2s;
 
   &:hover {
-    box-shadow: 0 0 3px 2px #035e00a7;
+    box-shadow: 0 0 0.7rem 0.1rem #035e00a7;
     border-color: #035e00a7;
 
     .icon-wrapper-mask {
