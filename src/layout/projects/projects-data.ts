@@ -1,6 +1,5 @@
 import { IconType } from 'react-icons';
 import { LuFolderTree, LuScrollText } from 'react-icons/lu';
-import { SiEslint } from 'react-icons/si';
 import { TbFishHook, TbPrompt, TbWorldSearch } from 'react-icons/tb';
 
 interface ProjectInterface {
