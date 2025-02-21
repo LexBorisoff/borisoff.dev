@@ -2,7 +2,6 @@ import { styled } from 'styled-components';
 
 export const FrontendWrapper = styled.div`
   position: absolute;
-  z-index: 1;
   top: -2rem;
   right: -3rem;
   display: flex;
@@ -13,7 +12,7 @@ export const FrontendWrapper = styled.div`
   border: 0.2rem solid #333333;
   border-radius: 1rem;
   box-shadow:
-    0 0 1rem 0.5rem #0e0e0e,
+    0 0 1rem 0.2rem #0e0e0e,
     0 0 15rem 0 #5fdaff49;
 `;
 
