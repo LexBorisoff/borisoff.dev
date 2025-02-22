@@ -32,6 +32,7 @@ export const ItemHeader = styled.div`
 `;
 
 export const ItemTitle = styled.h4`
+  z-index: 1;
   margin: 0;
   padding: 0;
   background: transparent;

@@ -15,7 +15,7 @@ import { AboutSection } from './styled/sections.styled';
 export default function About(): React.ReactNode {
   return (
     <AboutSection>
-      <Title>About Me</Title>
+      <Title>My Expertise</Title>
       <ItemsContainer>
         <ItemWrapper>
           <ItemHeader>
@@ -23,25 +23,18 @@ export default function About(): React.ReactNode {
           </ItemHeader>
           <ItemTitle>Frontend</ItemTitle>
           <ItemContent>
-            My main passion lies in developing elegant, responsive, and highly
-            interactive frontend interfaces powered by React, TypeScript, and
-            CSS. I love it for the opportunities to experiment, explore, and
-            express my creativity while pushing the boundaries of what a web
-            application can offer its users.
+            Crafting elegant, responsive, and highly interactive user interfaces
+            powered by React, TypeScript, and CSS
           </ItemContent>
         </ItemWrapper>
-
         <ItemWrapper>
           <ItemHeader>
             <Backend />
           </ItemHeader>
           <ItemTitle>Backend</ItemTitle>
           <ItemContent>
-            I also love and enjoy building robust backend functionalities to
-            support the business needs of an application. I find its
-            straightforward approach highly satisfying as it allows me to
-            utilize my programming expertise to come up with creative solutions
-            in seemingly rigid and confined environments.
+            Developing robust and secure backend functionalities to support the
+            business needs of an application
           </ItemContent>
         </ItemWrapper>
 
@@ -51,11 +44,8 @@ export default function About(): React.ReactNode {
           </ItemHeader>
           <ItemTitle>Full-Stack</ItemTitle>
           <ItemContent>
-            I believe that developing both sides of a web app is truly rewarding
-            and liberating. The challenge to think of the {"end-user's"}{' '}
-            perspective when crafting the UI, while understanding and building
-            the business logic on the backend allows me to write more seamless
-            and cohesive software.
+            Building seamless and cohesive full-stack applications that connect
+            data, logic, and user experience
           </ItemContent>
         </ItemWrapper>
       </ItemsContainer>

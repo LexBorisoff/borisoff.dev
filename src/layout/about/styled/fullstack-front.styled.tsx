@@ -10,12 +10,12 @@ export const FontLayerContainer = styled.div`
 `;
 
 export const Topbar = styled.div`
-  flex: 0 0 1.2rem;
+  flex: 0 0 1rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0 1rem;
+  gap: 0.2rem;
+  padding: 0 0.5rem;
   background: #0000005c;
 `;
 
@@ -24,8 +24,8 @@ interface TopbarCircleProps {
 }
 
 export const TopbarCircle = styled.div<TopbarCircleProps>`
-  height: 0.7rem;
-  width: 0.7rem;
+  height: 0.5rem;
+  width: 0.5rem;
   border-radius: 50%;
   background: ${({ $color }) => $color};
 `;
