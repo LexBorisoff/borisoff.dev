@@ -13,7 +13,7 @@ export const FrontendContainer = styled.div`
   border-radius: 1rem;
   box-shadow:
     0 0 1rem 0.2rem #0e0e0e,
-    0 0 15rem 0 #5fdaff49;
+    0 0 15rem 0 #7b00b4;
 `;
 
 const mainColor = '#5fdaff';

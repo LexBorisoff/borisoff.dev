@@ -18,7 +18,7 @@ export const BackendContainer = styled.div`
   border-radius: 1rem;
   box-shadow:
     0 0 1rem 0.2rem #0e0e0e,
-    0 0 15rem 0.5rem #0c721476;
+    0 0 15rem 0.5rem #005307;
   background-size: 3.5rem 3.5rem;
   background-image: linear-gradient(to right, #81818127 1px, transparent 1px),
     linear-gradient(to bottom, #81818127 1px, transparent 1px);

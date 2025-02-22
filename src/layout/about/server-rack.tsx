@@ -6,17 +6,15 @@ import {
   ServerRackBackground,
   ServerRackWrapper,
   ServerWrapper,
-} from '../styled/backend/server.styled';
+} from './styled/server.styled';
 
 function Server(): React.ReactNode {
   return (
     <ServerWrapper>
       <PanelsWrapper>
-        <ServerPanel />
-        <ServerPanel />
-        <ServerPanel />
-        <ServerPanel />
-        <ServerPanel />
+        {Array.from({ length: 5 }).map((_, i) => (
+          <ServerPanel key={i} />
+        ))}
       </PanelsWrapper>
       <LightsWrapper>
         <ServerLight />
@@ -30,11 +28,9 @@ export default function ServerRack(): React.ReactNode {
   return (
     <ServerRackBackground>
       <ServerRackWrapper>
-        <Server />
-        <Server />
-        <Server />
-        <Server />
-        <Server />
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Server key={i} />
+        ))}
       </ServerRackWrapper>
     </ServerRackBackground>
   );

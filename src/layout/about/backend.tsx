@@ -1,5 +1,5 @@
-import BackendIcons from './backend/backend-icons';
-import ServerRack from './backend/server-rack';
+import BackendIcons from './backend-icons';
+import ServerRack from './server-rack';
 import { BackendContainer } from './styled/backend.styled';
 
 export default function Backend(): React.ReactNode {

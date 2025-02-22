@@ -7,7 +7,7 @@ import {
   IconsWrapper,
   IconWrapper,
   ShadowWrapper,
-} from '../styled/backend/backend-icons.styled';
+} from './styled/backend-icons.styled';
 
 export default function BackendIcons(): React.ReactNode {
   return (
