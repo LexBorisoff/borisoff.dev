@@ -1,23 +1,23 @@
 import {
-  FeBox1,
-  FeBox2,
-  FeBox3,
-  FeBox4,
-  FeBox5,
-  FrontendWrapper,
+  FrontendTopBox,
+  FrontendTitleBox,
+  FrontendSubtitleBox,
+  FrontendFlexBox,
+  FrontendFlexItemBox,
+  FrontendContainer,
 } from './styled/frontend.styled';
 
 export default function Frontend(): React.ReactNode {
   return (
-    <FrontendWrapper>
-      <FeBox1 />
-      <FeBox2 />
-      <FeBox3 />
-      <FeBox4>
-        <FeBox5 />
-        <FeBox5 />
-        <FeBox5 />
-      </FeBox4>
-    </FrontendWrapper>
+    <FrontendContainer>
+      <FrontendTopBox />
+      <FrontendTitleBox />
+      <FrontendSubtitleBox />
+      <FrontendFlexBox>
+        <FrontendFlexItemBox />
+        <FrontendFlexItemBox />
+        <FrontendFlexItemBox />
+      </FrontendFlexBox>
+    </FrontendContainer>
   );
 }

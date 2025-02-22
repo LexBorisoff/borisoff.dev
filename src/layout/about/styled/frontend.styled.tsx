@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const FrontendWrapper = styled.div`
+export const FrontendContainer = styled.div`
   position: absolute;
   top: -2rem;
   right: -3rem;
@@ -16,38 +16,38 @@ export const FrontendWrapper = styled.div`
     0 0 15rem 0 #5fdaff49;
 `;
 
-const feBoxColor1 = '#5fdaff';
-const feBoxColor2 = '#ec5fff';
+const mainColor = '#5fdaff';
+const secondaryColor = '#ec5fff';
 
-export const FeBox1 = styled.div`
+export const FrontendTopBox = styled.div`
   margin-left: 3rem;
   height: 40%;
   width: 90%;
-  border: 1px solid ${feBoxColor1};
+  border: 1px solid ${mainColor};
   border-radius: 0.5rem;
-  box-shadow: 0 0 0.5rem 0.1rem ${feBoxColor1};
-  background: ${feBoxColor1};
+  box-shadow: 0 0 0.5rem 0.1rem ${mainColor};
+  background: ${mainColor};
 `;
 
-export const FeBox2 = styled.div`
+export const FrontendTitleBox = styled.div`
   height: 1.2rem;
   width: 40%;
   margin: 1rem 40% 0;
   border-radius: 0.3rem;
-  box-shadow: 0 0 0.5rem 0.1rem ${feBoxColor1};
-  background: ${feBoxColor1};
+  box-shadow: 0 0 0.5rem 0.1rem ${mainColor};
+  background: ${mainColor};
 `;
 
-export const FeBox3 = styled.div`
+export const FrontendSubtitleBox = styled.div`
   height: 1rem;
   width: 20%;
   margin: 1rem 50% 0;
   border-radius: 0.3rem;
-  box-shadow: 0 0 0.5rem 0.1rem ${feBoxColor2};
-  background: ${feBoxColor2};
+  box-shadow: 0 0 0.5rem 0.1rem ${secondaryColor};
+  background: ${secondaryColor};
 `;
 
-export const FeBox4 = styled.div`
+export const FrontendFlexBox = styled.div`
   flex: 1;
   display: flex;
   flex-flow: row nowrap;
@@ -59,7 +59,7 @@ export const FeBox4 = styled.div`
   mask-image: linear-gradient(#000000 40%, transparent 100%);
 `;
 
-export const FeBox5 = styled.div`
+export const FrontendFlexItemBox = styled.div`
   flex: 1;
   height: 100%;
   background: #202020;

@@ -1,12 +1,12 @@
 import BackendIcons from './backend/backend-icons';
 import ServerRack from './backend/server-rack';
-import { BackendWrapper } from './styled/backend.styled';
+import { BackendContainer } from './styled/backend.styled';
 
 export default function Backend(): React.ReactNode {
   return (
-    <BackendWrapper>
+    <BackendContainer>
       <ServerRack />
       <BackendIcons />
-    </BackendWrapper>
+    </BackendContainer>
   );
 }

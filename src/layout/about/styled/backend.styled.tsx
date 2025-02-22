@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const BackendWrapper = styled.div`
+export const BackendContainer = styled.div`
   position: absolute;
   top: -2rem;
   left: -3rem;
