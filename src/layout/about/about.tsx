@@ -2,6 +2,7 @@ import Title from '../../components/title/title';
 
 import Backend from './backend';
 import Frontend from './frontend';
+import Fullstack from './fullstack';
 import {
   ItemContent,
   ItemHeader,
@@ -45,7 +46,9 @@ export default function About(): React.ReactNode {
         </ItemWrapper>
 
         <ItemWrapper>
-          <ItemHeader></ItemHeader>
+          <ItemHeader>
+            <Fullstack />
+          </ItemHeader>
           <ItemTitle>Full-Stack</ItemTitle>
           <ItemContent>
             I believe that developing both sides of a web app is truly rewarding
