@@ -95,7 +95,7 @@ export const HeroTitleText = styled.div`
 `;
 
 export const HeroNameText = styled.span`
-  font-size: 6rem;
+  font-size: 6.5rem;
   padding: 0 1rem;
   font-weight: 600;
   line-height: 1.25;
@@ -105,19 +105,19 @@ export const HeroNameText = styled.span`
   -webkit-text-fill-color: transparent;
 
   ${media.lg} {
-    font-size: 5.5rem;
+    font-size: 6rem;
   }
 
   ${media.md} {
-    font-size: 5rem;
+    font-size: 5.5rem;
   }
 
   ${media.sm} {
-    font-size: 4rem;
+    font-size: 4.5rem;
   }
 
   ${media.xs} {
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
 `;
 

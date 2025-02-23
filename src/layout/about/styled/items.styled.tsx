@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 export const ItemsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
   gap: 2rem;
   width: 100%;
   max-width: 1280px;
@@ -15,7 +15,6 @@ export const ItemWrapper = styled.div`
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-  min-width: 20rem;
   min-height: 20rem;
   max-height: 100%;
   height: 100%;
