@@ -12,7 +12,6 @@ export const Subtitle = styled.h3`
   color: #c0c0c0;
   text-align: center;
   line-height: 1.5;
-  max-width: 40rem;
 
   ${media.lg} {
     font-size: 1.5rem;

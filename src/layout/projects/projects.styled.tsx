@@ -33,9 +33,9 @@ export const ProjectsWrapper = styled.div`
 `;
 
 export const ProjectContainer = styled.div`
-  flex: 1 2 17rem;
+  flex: 1 1 17rem;
   max-width: 22rem;
-  height: 22rem;
+  height: 20rem;
   display: flex;
   flex-direction: column;
   justify-content: start;

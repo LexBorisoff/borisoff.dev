@@ -1,6 +1,6 @@
-import Title, { Subtitle } from '../../components/title/title';
+import Title from '../../components/title/title';
 
-import { projects } from './projects-data';
+import { dxTools } from './projects-data';
 import {
   DocsLink,
   IconWrapper,
@@ -11,20 +11,15 @@ import {
   ProjectsSection,
   ProjectsWrapper,
   ProjectTitle,
-  SubtitleSpan,
 } from './projects.styled';
 
 export default function Projects(): React.ReactNode {
   return (
     <ProjectsSection>
-      <Title css={{ marginBottom: 0 }}>Dev Projects</Title>
-      <Subtitle>
-        Check out my <SubtitleSpan>libraries</SubtitleSpan> and{' '}
-        <SubtitleSpan>tools</SubtitleSpan>
-      </Subtitle>
+      <Title css={{ marginBottom: 0 }}>DX Projects</Title>
 
       <ProjectsWrapper>
-        {projects.map(({ name, Icon, description, url }) => (
+        {dxTools.map(({ name, Icon, description, url }) => (
           <ProjectContainer key={name}>
             <IconWrapper>
               <IconWrapperMask
