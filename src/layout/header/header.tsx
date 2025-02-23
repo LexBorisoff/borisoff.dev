@@ -6,6 +6,7 @@ import {
   IconWrapper,
   HeaderContainer,
   HeaderSection,
+  EmailWrapper,
 } from './header.styled';
 
 export default function Header(): React.ReactNode {
@@ -22,12 +23,12 @@ export default function Header(): React.ReactNode {
           </IconWrapper>
         </LinkWrapper>
 
-        <LinkWrapper>
+        <EmailWrapper>
           <IconWrapper className="header-icon-wrapper">
             <MdEmail className="header-icon" />
           </IconWrapper>
           <span>lex@borisoff.dev</span>
-        </LinkWrapper>
+        </EmailWrapper>
       </HeaderContainer>
     </HeaderSection>
   );

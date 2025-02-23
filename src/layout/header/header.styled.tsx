@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { css, styled } from 'styled-components';
 
 import { media } from '../../theme/media';
 
@@ -32,13 +32,12 @@ export const HeaderContainer = styled.div`
   }
 `;
 
-export const LinkWrapper = styled.a`
+const wrapperCss = css`
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 1rem;
   color: inherit;
-  text-decoration: none;
 
   ${media.md} {
     gap: 0.7rem;
@@ -52,6 +51,7 @@ export const LinkWrapper = styled.a`
     .header-icon-wrapper {
       background: #0c2576ab;
       border: 1px solid #475994ab;
+      box-shadow: 0 0 0.5rem 0 #0c2576ab;
     }
   }
 
@@ -67,6 +67,27 @@ export const LinkWrapper = styled.a`
     ${media.md} {
       font-size: 1rem;
     }
+  }
+`;
+
+export const LinkWrapper = styled.a`
+  ${wrapperCss}
+  text-decoration: none;
+`;
+
+export const EmailWrapper = styled.div`
+  ${wrapperCss}
+  border: 1px solid #3a3a3a;
+  border-left: none;
+  border-radius: 2.5rem;
+  padding-right: 1rem;
+  background: #2727277a;
+
+  &:hover {
+    background: #0c2576ab;
+    border: 1px solid #475994ab;
+    border-left: none;
+    box-shadow: 0 0 0.5rem 0 #0c2576ab;
   }
 `;
 
