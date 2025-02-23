@@ -1,6 +1,5 @@
 import { IconType } from 'react-icons';
 import { LuFolderTree, LuScrollText } from 'react-icons/lu';
-import { SiEslint } from 'react-icons/si';
 import { TbFishHook, TbPrompt, TbWorldSearch } from 'react-icons/tb';
 
 interface ProjectInterface {
@@ -14,13 +13,7 @@ function getUrl(repo: string): string {
   return `https://github.com/LexBorisoff/${repo}`;
 }
 
-export const projects: ProjectInterface[] = [
-  {
-    name: 'fs-hooks',
-    Icon: TbFishHook,
-    url: getUrl('fs-hooks'),
-    description: 'Library for working with the file system in Node.js',
-  },
+export const dxTools: ProjectInterface[] = [
   {
     name: 'search-web',
     Icon: TbWorldSearch,
@@ -31,14 +24,22 @@ export const projects: ProjectInterface[] = [
     name: 'package-scripts',
     Icon: LuScrollText,
     url: getUrl('package-scripts'),
-    description:
-      'Interactively select and run package scripts using any package manager',
+    description: 'Interactively select and run package scripts',
   },
   {
     name: 'switch-dir',
     Icon: LuFolderTree,
     url: getUrl('switch-dir'),
-    description: 'Fast and interactive navigation between directories',
+    description: 'Fast and interactive directory navigation',
+  },
+];
+
+export const libraries: ProjectInterface[] = [
+  {
+    name: 'fs-hooks',
+    Icon: TbFishHook,
+    url: getUrl('fs-hooks'),
+    description: 'Library for working with the file system in Node.js',
   },
   {
     name: 'prompts',
@@ -46,11 +47,5 @@ export const projects: ProjectInterface[] = [
     url: getUrl('prompts'),
     description:
       'Interactive prompts with abstracted methods and improved rendering',
-  },
-  {
-    name: 'eslint-plugin',
-    Icon: SiEslint,
-    url: getUrl('eslint-plugin'),
-    description: 'ESLint plugin with my favourite config rules',
   },
 ];

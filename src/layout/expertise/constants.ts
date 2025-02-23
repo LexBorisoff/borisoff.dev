@@ -9,9 +9,9 @@ export const ADJECTIVES = [
   'intuitive',
   'responsive',
   'data-driven',
+  'interactive',
   'user-centric',
   'feature-rich',
-  'sophisticated',
 ];
 
 export const ADJECTIVE_ANIMATION = {
