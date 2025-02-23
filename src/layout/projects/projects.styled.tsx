@@ -10,8 +10,8 @@ export const ProjectsSection = styled.section`
   gap: 1rem;
   overflow: hidden;
   padding-bottom: 2rem;
-  background-image: radial-gradient(#3f3f3f 1px, transparent 0);
-  background-size: 3rem 3rem;
+  border-top: 1px solid #181818;
+  background: #111111;
 `;
 
 export const SubtitleSpan = styled.span`
@@ -33,6 +33,7 @@ export const ProjectsWrapper = styled.div`
 `;
 
 export const ProjectContainer = styled.div`
+  z-index: 1;
   flex: 1 1 17rem;
   max-width: 22rem;
   height: 20rem;
