@@ -2,7 +2,7 @@ import { styled, css, keyframes } from 'styled-components';
 
 export const DragContainer = styled.div`
   position: relative;
-  flex: 1 100%;
+  flex: 1;
   width: 95%;
   display: flex;
   background: #4949491d;

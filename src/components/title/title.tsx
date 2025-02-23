@@ -1,16 +1,34 @@
 import { CSSProperties, styled } from 'styled-components';
 
+import { media } from '../../theme/media';
+
 export const Subtitle = styled.h3`
-  max-width: 35rem;
-  margin-bottom: 1.5rem;
-  padding: 0;
-  font-size: 1.4rem;
+  margin: 0;
+  padding: 0 3rem;
+  font-size: 1.6rem;
   font-weight: normal;
   font-style: italic;
   font-family: 'Courier Prime', 'Courier New', Courier, monospace;
   color: #c0c0c0;
   text-align: center;
   line-height: 1.5;
+
+  ${media.lg} {
+    font-size: 1.5rem;
+  }
+
+  ${media.md} {
+    font-size: 1.4rem;
+  }
+
+  ${media.sm} {
+    font-size: 1.3rem;
+  }
+
+  ${media.xs} {
+    font-size: 1.2rem;
+    line-height: 1.3;
+  }
 `;
 
 interface TitleStyledProps {
@@ -18,11 +36,12 @@ interface TitleStyledProps {
 }
 const TitleStyled = styled.h2<TitleStyledProps>`
   font-weight: 600;
-  color: #cbcbcb;
+  text-align: center;
+  color: #ebebeb;
 `;
 
 interface TitleProps {
-  children: string;
+  children: React.ReactNode;
   css?: CSSProperties;
 }
 

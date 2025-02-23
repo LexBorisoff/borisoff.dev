@@ -1,6 +1,6 @@
 import { styled, keyframes } from 'styled-components';
 
-import { ADJECTIVE_ANIMATION } from '../constants';
+import { ADJECTIVE_ANIMATION } from '../../expertise/constants';
 
 const enter = keyframes`
   from {
