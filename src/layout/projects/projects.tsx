@@ -1,6 +1,6 @@
 import Title from '../../components/title/title';
 
-import { dxTools } from './projects-data';
+import { projects } from './projects-data';
 import {
   DocsLink,
   IconWrapper,
@@ -16,10 +16,10 @@ import {
 export default function Projects(): React.ReactNode {
   return (
     <ProjectsSection>
-      <Title css={{ marginBottom: 0 }}>DX Projects</Title>
+      <Title css={{ marginBottom: 0 }}>Side Projects</Title>
 
       <ProjectsWrapper>
-        {dxTools.map(({ name, Icon, description, url }) => (
+        {projects.map(({ name, Icon, description, url }) => (
           <ProjectContainer key={name}>
             <IconWrapper>
               <IconWrapperMask
