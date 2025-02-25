@@ -27,8 +27,7 @@ export default function Hero(): React.ReactNode {
         <TextWrapper>
           <HeroTitleText>
             <span>
-              Full-Stack <PiStackBold className="full-stack-hero-icon" />{' '}
-              Developer
+              Software <PiStackBold className="full-stack-hero-icon" /> Engineer
             </span>
           </HeroTitleText>
 
