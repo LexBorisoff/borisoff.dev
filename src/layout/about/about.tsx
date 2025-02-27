@@ -14,7 +14,7 @@ import { AboutSection } from './styled/sections.styled';
 
 export default function About(): React.ReactNode {
   return (
-    <AboutSection>
+    <AboutSection id="about">
       <Title>My Expertise</Title>
       <ItemsContainer>
         <ItemWrapper>
