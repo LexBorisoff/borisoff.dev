@@ -20,7 +20,7 @@ export default function Hero(): React.ReactNode {
   const adjective = useNextAdjective();
 
   return (
-    <HeroSection>
+    <HeroSection id="hero">
       <SectionMask />
       <Header />
       <HeroContent>

@@ -15,7 +15,7 @@ import {
 
 export default function Projects(): React.ReactNode {
   return (
-    <ProjectsSection>
+    <ProjectsSection id="projects">
       <Title css={{ marginBottom: 0 }}>Side Projects</Title>
 
       <ProjectsWrapper>
