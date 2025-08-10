@@ -69,7 +69,8 @@ export const IconWrapper = styled.div`
   display: grid;
   place-content: center;
   background-size: 1rem 1rem;
-  background-image: linear-gradient(to right, #81818127 1px, transparent 1px),
+  background-image:
+    linear-gradient(to right, #81818127 1px, transparent 1px),
     linear-gradient(to bottom, #81818127 1px, transparent 1px);
   background-position: -2px -2px;
 `;

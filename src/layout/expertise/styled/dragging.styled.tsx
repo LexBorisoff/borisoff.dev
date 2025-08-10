@@ -93,11 +93,8 @@ function draggingCss(
     background-size: 2rem 2rem;
     background-position: -1rem -1rem;
     background-color: ${bgColor};
-    background-image: linear-gradient(
-        to right,
-        ${lineColor} 1px,
-        transparent 1px
-      ),
+    background-image:
+      linear-gradient(to right, ${lineColor} 1px, transparent 1px),
       linear-gradient(to bottom, ${lineColor} 1px, transparent 1px);
   `;
 }
