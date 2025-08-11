@@ -130,7 +130,8 @@ const turningWheelsCss = css`
 const backgroundCss = css`
   background-color: #1835945e;
   background-size: 4rem 4rem;
-  background-image: linear-gradient(to right, #183594 1px, transparent 1px),
+  background-image:
+    linear-gradient(to right, #183594 1px, transparent 1px),
     linear-gradient(to bottom, #183594 1px, transparent 1px);
   background-position: -2rem -2rem;
   border: 0.3rem dashed #183594;

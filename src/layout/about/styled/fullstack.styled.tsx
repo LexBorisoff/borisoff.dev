@@ -34,7 +34,8 @@ export const MiddleLayer = styled.div`
   width: 70%;
   background-color: #06bb00;
   background-size: 3rem 3rem;
-  background-image: linear-gradient(to right, #46e754 1px, transparent 1px),
+  background-image:
+    linear-gradient(to right, #46e754 1px, transparent 1px),
     linear-gradient(to bottom, #46e754 1px, transparent 1px);
   background-position: -0.4rem -0.4rem;
   border: 0.2rem solid #46e754;
@@ -51,7 +52,8 @@ export const BackLayer = styled.div`
   width: 70%;
   background-color: #941818;
   background-size: 3rem 3rem;
-  background-image: linear-gradient(to right, #cc1010 1px, transparent 1px),
+  background-image:
+    linear-gradient(to right, #cc1010 1px, transparent 1px),
     linear-gradient(to bottom, #cc1010 1px, transparent 1px);
   background-position: -0.4rem -0.4rem;
   border: 0.2rem solid #cc1010;

@@ -12,7 +12,8 @@ export const HeroSection = styled.section`
   justify-content: flex-start;
   background-color: #0f0f0f;
   background-size: 3rem 3rem;
-  background-image: linear-gradient(to right, #81818127 1px, transparent 1px),
+  background-image:
+    linear-gradient(to right, #81818127 1px, transparent 1px),
     linear-gradient(to bottom, #81818127 1px, transparent 1px);
   background-position: -2px -2px;
   mask-image: linear-gradient(#000000 85%, transparent 100%);
@@ -28,11 +29,8 @@ export const HeroSection = styled.section`
 
 function sectionMaskBackground(x: number, y: number): ReturnType<typeof css> {
   return css`
-    background: radial-gradient(
-        ${x}rem ${y}rem at 10% 0%,
-        #00115e76,
-        transparent
-      ),
+    background:
+      radial-gradient(${x}rem ${y}rem at 10% 0%, #00115e76, transparent),
       radial-gradient(${x}rem ${y}rem at 0% 100%, #5e000058, transparent),
       radial-gradient(${x}rem ${y}rem at 100% 0%, #6e003c70, transparent),
       radial-gradient(${x}rem ${y}rem at 90% 100%, #6e54005a, transparent);
