@@ -1,6 +1,6 @@
 import { styled, css, keyframes } from 'styled-components';
 
-import { AppStateType } from '../types';
+import type { AppStateType } from '../types';
 
 export const Topbar = styled.div`
   flex: 0 0 2rem;

@@ -1,6 +1,8 @@
-import { CSSProperties, styled } from 'styled-components';
+import { styled } from 'styled-components';
 
 import { media } from '../../theme/media';
+
+import type { CSSProperties } from 'styled-components';
 
 export const Subtitle = styled.h3`
   margin: 0;
