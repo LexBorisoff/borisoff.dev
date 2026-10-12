@@ -1,6 +1,7 @@
-import { IconType } from 'react-icons';
 import { LuFolderTree, LuScrollText } from 'react-icons/lu';
 import { TbFishHook, TbPrompt, TbWorldSearch } from 'react-icons/tb';
+
+import type { IconType } from 'react-icons';
 
 enum ProjectType {
   CLI = 'tools',

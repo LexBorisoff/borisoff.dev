@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { AppStateType } from '../layout/expertise/types';
+import type { AppStateType } from '../layout/expertise/types';
 
 interface DraggingState {
   frontend: boolean;
