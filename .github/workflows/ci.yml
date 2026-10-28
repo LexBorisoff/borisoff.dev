@@ -28,6 +28,9 @@ jobs:
         with:
           runtime: node@${{ matrix.node-version }}
           cache: true
+          install: false
+      - run: pnpm ci
+      - run: pnpm run ci
 
   results:
     name: CI Results
