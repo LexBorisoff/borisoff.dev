@@ -7,7 +7,7 @@
     "prebuild": "pnpm run ci",
     "build": "next build",
     "start": "next start",
-    "ci": "concurrently \"pnpm run check:style\" \"pnpm run check:build\"",
+    "ci": "pnpm run check:style && pnpm run check:build",
     "check:build": "tsc -p tsconfig.json --noEmit",
     "check:style": "concurrently \"pnpm run check:format\" \"pnpm run check:lint\"",
     "check:format": "prettier --check \"*.{js,cjs,mjs,ts,cts,mts}\" \"{app,src}/**/*.{js,cjs,mjs,ts,cts,mts,jsx,tsx}\"",
