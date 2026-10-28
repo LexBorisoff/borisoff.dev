@@ -12,5 +12,5 @@ export async function sendChatMessage(
   const fields: State = {
     promptInput: (formData.get("promptInput") as string) ?? "",
   };
-  console.log("fields >>>", fields);
+  //
 }
