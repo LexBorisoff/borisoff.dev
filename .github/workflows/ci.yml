@@ -20,13 +20,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [24]
+        node-version: ["22.x", latest]
     steps:
       - uses: actions/checkout@v6
       - name: Install pnpm and Node.js
         uses: pnpm/setup@v3
         with:
-          runtime: node@{{ matrix.node-version }}
+          runtime: node@${{ matrix.node-version }}
           cache: true
 
   results:
