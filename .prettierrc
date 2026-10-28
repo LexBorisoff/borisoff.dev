@@ -1,7 +1,3 @@
 {
-  "singleQuote": true,
-  "trailingComma": "all",
-  "endOfLine": "auto",
-  "useTabs": false,
-  "objectWrap": "preserve"
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

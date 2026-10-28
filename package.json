@@ -1,44 +1,33 @@
 {
-  "name": "borisoff.dev",
+  "name": "v2",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0-development",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "prebuild": "npm run ci",
-    "build": "tsc -b && vite build",
-    "ci": "npm run check:style && npm run check:build",
-    "preview": "vite preview",
-    "check:style": "npm run check:format && npm run check:lint",
-    "check:build": "tsc -p tsconfig.app.json --noEmit",
-    "check:format": "prettier --check \"*.{js,cjs,mjs,ts,cts,mts}\" \"src/**/*.{js,jsx,ts,tsx}\"",
-    "check:lint": "eslint \"src/**/*.{js,ts,jsx,tsx}\"",
-    "style": "npm run format && npm run lint",
-    "format": "prettier --write \"*.{js,cjs,mjs,ts,cts,mts}\" \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "npm run check:lint -- --fix",
-    "prepare": "husky"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "format": "prettier --write \"*.{js,cjs,mjs,ts,cts,mts}\" \"{app,components}/**/*.{js,ts,jsx,tsx}\""
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-draggable": "^4.5.0",
-    "react-icons": "^5.5.0",
-    "styled-components": "^6.1.19"
+    "@tailwindcss/postcss": "^4.3.3",
+    "cn": "^0.5.0",
+    "next": "16.4.3",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "@eslint/js": "^9.17.0",
-    "@lexjs/eslint": "^2.0.0",
-    "@types/react": "^18.3.23",
-    "@types/react-dom": "^18.3.7",
-    "@vitejs/plugin-react": "^4.7.0",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^15.15.0",
-    "husky": "^9.1.7",
-    "typescript": "^5.9.2",
-    "vite": "^6.3.5"
-  }
+    "@lexjs/eslint": "^3.0.0",
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^10.12.0",
+    "eslint-config-next": "16.4.0",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "typescript-eslint": "^8.71.2"
+  },
+  "packageManager": "pnpm@12.11.2"
 }

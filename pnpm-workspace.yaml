@@ -1,0 +1,4 @@
+allowBuilds:
+  unrs-resolver: false
+minimumReleaseAgeExclude:
+  - "@lexjs/eslint@3.0.0"

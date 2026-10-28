@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@layer base {
+  textarea,
+  input,
+  select {
+    margin: 0;
+    vertical-align: bottom;
+  }
+}
